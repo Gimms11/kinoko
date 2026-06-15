@@ -26,32 +26,41 @@ export const Header: React.FC = () => {
 
   return (
     <>
-      <header className="sticky top-0 z-40 w-full bg-[#FDFBF7] border-b-3 border-[#1C1917] py-4 px-6 select-none">
+      <header className="sticky top-0 z-40 w-full bg-[#FF4C4C]/95 backdrop-blur-sm border-b-3 border-black/30 py-3.5 px-6 select-none shadow-[0_12px_12px_rgba(0,0,0,0.04)]">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           {/* Logo with sticker style */}
           <a href="#inicio" className="flex items-center gap-2 group">
             <motion.div
-              whileHover={{ rotate: [-3, 3, -3] }}
-              className="w-12 h-12 bg-[#FFDE4D] border-2 border-[#1C1917] rounded-xl flex items-center justify-center p-1.5 shadow-sticker-sm"
+              whileHover={{ scale: 1.08 }}
+              transition={{ type: 'spring', stiffness: 400, damping: 15 }}
+              className="w-10 h-10 rounded-xl flex items-center justify-center relative overflow-hidden shadow-[0_2px_8px_rgba(228,205,58,0.35)] border border-stone-200"
             >
-              <MushroomLogo className="w-full h-full" />
+              <div 
+                className="absolute inset-0 z-0 opacity-80"
+                style={{ 
+                  backgroundImage: "url('/waves_bg.jpeg')", 
+                  backgroundSize: "cover", 
+                  backgroundPosition: "center" 
+                }}
+              />
+              <img src="/Mascota.png" alt="Kinoko Logo" className="w-[85%] h-[85%] object-contain relative z-10" />
             </motion.div>
-            <span className="font-fredoka text-2xl font-black tracking-tight text-[#1C1917] group-hover:text-[#FF4C4C] transition-colors">
+            <span className="font-fredoka text-xl font-bold tracking-tight text-[#1C1917] group-hover:text-[#FFDE4D] transition-colors duration-200">
               Kinoko
             </span>
           </a>
 
           {/* Desktop Nav Links */}
-          <nav className="hidden lg:flex items-center gap-6 font-fredoka text-sm font-black uppercase tracking-wider text-[#1C1917]">
+          <nav className="hidden lg:flex items-center gap-7 font-outfit text-sm font-medium tracking-wide text-[#1C1917]/70">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
                 onClick={(e) => handleLinkClick(e, link.href)}
-                className="relative hover:text-[#FF4C4C] transition-colors py-1 group"
+                className="relative hover:text-[#1C1917] transition-colors duration-200 py-1 group"
               >
                 {link.name}
-                <span className="absolute bottom-0 left-0 w-0 h-1 bg-[#FF4C4C] border border-[#1C1917] rounded-full transition-all group-hover:w-full"></span>
+                <span className="absolute -bottom-0.5 left-0 w-0 h-[1.5px] bg-[#FFDE4D] rounded-full transition-all duration-300 ease-out group-hover:w-full"></span>
               </a>
             ))}
           </nav>
@@ -66,7 +75,7 @@ export const Header: React.FC = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileOpen(!isMobileOpen)}
-            className="lg:hidden p-2 border-sticker rounded-xl bg-[#FFDE4D] shadow-sticker-sm text-[#1C1917] hover:bg-[#FFDE4D]/80 transition-colors cursor-pointer"
+            className="lg:hidden p-2 border border-stone-200 rounded-xl bg-white shadow-sm text-[#1C1917] hover:bg-stone-50 transition-colors cursor-pointer"
           >
             {isMobileOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
@@ -91,26 +100,26 @@ export const Header: React.FC = () => {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-              className="fixed right-0 top-0 bottom-0 z-50 w-72 bg-[#FDFBF7] border-l-3 border-[#1C1917] p-8 flex flex-col justify-between"
+              className="fixed right-0 top-0 bottom-0 z-50 w-72 bg-white border-l border-black/8 p-8 flex flex-col justify-between shadow-[-8px_0_32px_rgba(0,0,0,0.08)]"
             >
               <div className="flex flex-col gap-8">
                 <div className="flex items-center justify-between">
-                  <span className="font-fredoka text-xl font-black text-[#1C1917]">Menú</span>
+                  <span className="font-fredoka text-lg font-bold text-[#1C1917]">Menú</span>
                   <button
                     onClick={() => setIsMobileOpen(false)}
-                    className="p-2 border-sticker rounded-xl bg-white shadow-sticker-sm text-[#1C1917] cursor-pointer"
+                    className="p-2 border border-stone-200 rounded-xl bg-stone-50 shadow-sm text-[#1C1917] cursor-pointer hover:bg-stone-100 transition-colors"
                   >
                     <X size={18} />
                   </button>
                 </div>
 
-                <nav className="flex flex-col gap-6 font-fredoka text-base font-black uppercase tracking-wider text-[#1C1917]">
+                <nav className="flex flex-col gap-1 font-outfit text-sm font-medium tracking-wide text-[#1C1917]/70">
                   {navLinks.map((link) => (
                     <a
                       key={link.name}
                       href={link.href}
                       onClick={(e) => handleLinkClick(e, link.href)}
-                      className="hover:text-[#FF4C4C] transition-colors py-2 border-b border-[#1C1917]/10"
+                      className="hover:text-[#1C1917] hover:bg-stone-50 transition-all duration-150 py-3 px-3 rounded-xl border-b border-stone-100 last:border-0"
                     >
                       {link.name}
                     </a>

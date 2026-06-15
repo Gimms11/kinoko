@@ -91,7 +91,7 @@ export const Catalog: React.FC = () => {
   });
 
   return (
-    <section id="catalogo" className="py-20 bg-stone-50 border-b-3 border-[#1C1917] select-none">
+    <section id="catalogo" className="py-24 bg-stone-50 select-none">
       <div className="max-w-7xl mx-auto px-6">
         
         {/* Section Header */}
@@ -103,7 +103,7 @@ export const Catalog: React.FC = () => {
             <h2 className="font-fredoka text-3xl sm:text-4xl font-black text-[#1C1917]">
               Favoritos del Market
             </h2>
-            <div className="h-2 w-24 bg-[#FFDE4D] border-sticker-sm rounded-full shadow-sticker-sm mx-auto md:mx-0"></div>
+            <div className="h-1 w-16 bg-[#FFDE4D] rounded-full mx-auto md:mx-0 mt-6"></div>
           </div>
 
           {/* Search bar */}
@@ -123,10 +123,10 @@ export const Catalog: React.FC = () => {
               key={cat.id}
               data-filter={cat.id}
               onClick={() => setActiveCategory(cat.id)}
-              className={`px-5 py-2.5 text-xs font-black rounded-2xl border-sticker-sm transition-all tracking-wider flex items-center gap-1.5 ${
+              className={`px-5 py-2 text-sm font-bold rounded-full border transition-all tracking-wide flex items-center gap-2 ${
                 activeCategory === cat.id
-                  ? 'bg-[#FFDE4D] text-[#1C1917] shadow-sticker-sm translate-x-[-2px] translate-y-[-2px]'
-                  : 'bg-white text-[#1C1917]/70 hover:bg-stone-100 hover:text-[#1C1917] cursor-pointer'
+                  ? 'bg-[#FFDE4D] text-[#1C1917] border-[#FFDE4D] shadow-[0_4px_12px_rgba(255,222,77,0.3)]'
+                  : 'bg-white text-stone-500 border-stone-200 hover:bg-stone-100 hover:text-stone-800 hover:border-stone-300 cursor-pointer shadow-sm'
               }`}
             >
               {getCategoryIcon(cat.id)}
@@ -173,13 +173,13 @@ export const Catalog: React.FC = () => {
             >
               <div className="relative mb-6">
                 {/* Speech bubble */}
-                <div className="bg-[#FFDE4D] border-sticker p-4 rounded-2xl shadow-sticker font-fredoka font-black text-sm text-[#1C1917] relative mb-6 rotate-[-2deg]">
+                <div className="bg-white border border-stone-200 p-5 rounded-2xl shadow-lg font-fredoka font-bold text-sm text-[#1C1917] relative mb-6">
                   ¡Ups! No encontramos ningún producto... <br />
-                  ¿Probamos con otra palabra?
-                  <div className="absolute w-4 h-4 bg-[#FFDE4D] border-r-3 border-b-3 border-[#1C1917] bottom-[-9px] left-1/2 -translate-x-1/2 rotate-[45deg]"></div>
+                  <span className="text-stone-400 font-medium">¿Probamos con otra palabra?</span>
+                  <div className="absolute w-4 h-4 bg-white border-r border-b border-stone-200 bottom-[-9px] left-1/2 -translate-x-1/2 rotate-[45deg]"></div>
                 </div>
                 {/* Mascot waving sticker */}
-                <img src="/mascota_waving.png" alt="Mascota" className="w-40 h-40 object-contain mx-auto filter drop-shadow-[4px_4px_0px_#1C1917]" />
+                <img src="/mascota_waving.png" alt="Mascota" className="w-40 h-40 object-contain mx-auto filter drop-shadow-xl" />
               </div>
             </motion.div>
           )}

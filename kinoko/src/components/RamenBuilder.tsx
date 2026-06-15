@@ -367,14 +367,14 @@ export const RamenBuilder: React.FC = () => {
                     onClick={() => !isDisabled && handleToggleTopping(opt)}
                     className={`p-4 border-sticker-sm rounded-2xl transition-all flex flex-col justify-between ${
                       isSelected
-                        ? 'bg-[#FFDE4D] shadow-sticker-sm translate-x-[-2px] translate-y-[-2px]'
+                        ? 'bg-[#FFDE4D] shadow-[0_4px_14px_rgba(228,205,58,0.35)] border-[#E4CD3A]'
                         : isDisabled
-                          ? 'opacity-40 cursor-not-allowed bg-stone-100'
-                          : 'bg-white hover:bg-stone-50 cursor-pointer'
+                          ? 'opacity-40 cursor-not-allowed bg-stone-100 border-stone-200'
+                          : 'bg-white hover:bg-stone-50 cursor-pointer border-stone-200 shadow-sm'
                     }`}
                   >
                     <div className="flex items-center gap-3 mb-2">
-                      <div className="w-12 h-12 bg-[#FDFBF7] border-2 border-[#1C1917] rounded-xl flex items-center justify-center p-1 shadow-sticker-sm">
+                      <div className="w-12 h-12 bg-[#FDFBF7] border border-stone-200 rounded-xl flex items-center justify-center p-1 shadow-sm">
                         <OptionIcon id={opt.id} className="w-full h-full" />
                       </div>
                       <div>
@@ -403,14 +403,14 @@ export const RamenBuilder: React.FC = () => {
                     key={opt.id}
                     whileHover={{ y: -2 }}
                     onClick={() => setSelectedSalsa(opt)}
-                    className={`p-4 border-sticker-sm rounded-2xl cursor-pointer transition-all flex items-center justify-between ${
+                    className={`p-4 border border-stone-200 rounded-2xl cursor-pointer transition-all flex items-center justify-between ${
                       selectedSalsa?.id === opt.id
-                        ? 'bg-[#FFDE4D] shadow-sticker-sm translate-x-[-2px] translate-y-[-2px]'
-                        : 'bg-white hover:bg-stone-50'
+                        ? 'bg-[#FFDE4D] shadow-[0_4px_14px_rgba(228,205,58,0.35)] border-[#E4CD3A]'
+                        : 'bg-white hover:bg-stone-50 shadow-sm'
                     }`}
                   >
                     <div className="flex items-center gap-3">
-                      <div className="w-12 h-12 bg-[#FDFBF7] border-2 border-[#1C1917] rounded-xl flex items-center justify-center p-1.5 shadow-sticker-sm">
+                      <div className="w-12 h-12 bg-[#FDFBF7] border border-stone-200 rounded-xl flex items-center justify-center p-1.5 shadow-sm">
                         <OptionIcon id={opt.id} className="w-full h-full text-[#1C1917]" />
                       </div>
                       <div>
@@ -432,7 +432,7 @@ export const RamenBuilder: React.FC = () => {
               <motion.div
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="bg-yellow-50/50 border-sticker-sm p-5 rounded-2xl relative border-t-8 border-t-[#FF4C4C] shadow-sticker-sm font-mono text-xs text-[#1C1917] space-y-3 mt-4"
+                className="bg-yellow-50/50 border border-stone-200 p-5 rounded-2xl relative border-t-4 border-t-[#FF4C4C] shadow-[0_4px_20px_rgba(0,0,0,0.06)] font-mono text-xs text-[#1C1917] space-y-3 mt-4"
               >
                 <div className="absolute top-2 right-2 rotate-[6deg]">
                   <Sparkles size={16} className="text-[#FFDE4D] fill-[#FFDE4D]" />
@@ -500,7 +500,7 @@ export const RamenBuilder: React.FC = () => {
   };
 
   return (
-    <section id="ramen-builder" className="py-20 bg-[#FDFBF7] border-b-3 border-[#1C1917] select-none">
+    <section id="ramen-builder" className="py-20 bg-[#FDFBF7] select-none">
       <div className="max-w-7xl mx-auto px-6">
         
         {/* Section Header */}
@@ -511,14 +511,14 @@ export const RamenBuilder: React.FC = () => {
           <h2 className="font-fredoka text-3xl sm:text-4xl font-black text-[#1C1917]">
             Configurador de Ramen
           </h2>
-          <div className="h-2 w-24 bg-[#FFDE4D] border-sticker-sm rounded-full shadow-sticker-sm mx-auto"></div>
+          <div className="h-1 w-16 bg-[#FFDE4D] rounded-full mx-auto"></div>
         </div>
 
         {/* Builder Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch ">
           
           {/* Left Column: Visual Bowl Simulator */}
-          <div className="lg:col-span-5 flex flex-col justify-between bg-white border-sticker rounded-3xl p-6 shadow-sticker relative">
+          <div className="lg:col-span-5 flex flex-col justify-between bg-white border border-stone-300 rounded-3xl p-6 shadow-[8px_8px_rgba(0,0,0,0.10)] relative">
             <h3 className="font-fredoka text-base font-black text-[#1C1917] text-center mb-6 uppercase tracking-wider flex items-center justify-center gap-1.5">
               <Soup size={16} /> Tu Tazón de Ramen
             </h3>
@@ -533,11 +533,11 @@ export const RamenBuilder: React.FC = () => {
                   <motion.div
                     initial={{ scale: 0.9 }}
                     animate={{ scale: 1 }}
-                    className="bg-[#FFDE4D] border-sticker p-4 rounded-2xl shadow-sticker font-fredoka font-black text-xs text-[#1C1917] relative rotate-[-2deg]"
+                    className="bg-[#FFDE4D] border border-[#E4CD3A] p-4 rounded-2xl shadow-[0_4px_16px_rgba(228,205,58,0.3)] font-fredoka font-bold text-xs text-[#1C1917] relative rotate-[-2deg]"
                   >
                     ¡Tu tazón está vacío! <br />
                     Elige la base de fideos para empezar.
-                    <div className="absolute w-3 h-3 bg-[#FFDE4D] border-r-2 border-b-2 border-[#1C1917] bottom-[-7px] left-1/2 -translate-x-1/2 rotate-[45deg]"></div>
+                    <div className="absolute w-3 h-3 bg-[#FFDE4D] border-r border-b border-[#E4CD3A] bottom-[-7px] left-1/2 -translate-x-1/2 rotate-[45deg]"></div>
                   </motion.div>
                   <img src="/mascota_waving.png" alt="Mascota" className="w-28 h-28 object-contain filter drop-shadow-[3px_3px_0px_#1C1917] animate-float-cute" />
                 </div>
@@ -548,7 +548,7 @@ export const RamenBuilder: React.FC = () => {
                 <motion.div
                   initial={{ scale: 0, rotate: -30 }}
                   animate={{ scale: 1, rotate: -4 }}
-                  className="absolute top-4 left-4 z-[35] bg-[#FFDE4D] border-sticker px-3 py-1.5 rounded-xl shadow-sticker font-fredoka font-black text-[10px] tracking-wider uppercase flex items-center gap-1 text-[#1C1917]"
+                  className="absolute top-4 left-4 z-[35] bg-[#FFDE4D] border border-[#E4CD3A] px-3 py-1.5 rounded-xl shadow-[0_4px_12px_rgba(228,205,58,0.35)] font-fredoka font-bold text-[10px] tracking-wider uppercase flex items-center gap-1 text-[#1C1917]"
                 >
                   <Sparkles size={10} className="fill-current" /> SERVIDO
                 </motion.div>
@@ -563,7 +563,7 @@ export const RamenBuilder: React.FC = () => {
                     animate={{ y: 0, opacity: 1, rotate: -8 }}
                     exit={{ y: -150, opacity: 0 }}
                     transition={{ type: 'spring', damping: 10 }}
-                    className="absolute bottom-28 left-[18%] z-[5] bg-[#1C1917] border-sticker-sm w-16 h-20 rounded-md shadow-sticker-sm flex items-center justify-center text-stone-500 font-bold"
+                    className="absolute bottom-28 left-[18%] z-[5] bg-[#1C1917] border border-stone-700 w-16 h-20 rounded-md shadow-md flex items-center justify-center text-stone-500 font-bold"
                   >
                     <div className="w-12 h-16 border border-dashed border-white/20 rounded"></div>
                   </motion.div>
@@ -636,7 +636,7 @@ export const RamenBuilder: React.FC = () => {
                     animate={{ y: 0, opacity: 1, rotate: -12 }}
                     exit={{ y: -220, opacity: 0 }}
                     transition={{ type: 'spring', damping: 12, stiffness: 100 }}
-                    className="absolute bottom-22 left-[18%] z-[20] w-14 h-14 bg-white border-sticker rounded-full flex items-center justify-center shadow-sticker-sm filter drop-shadow-md select-none"
+                    className="absolute bottom-22 left-[18%] z-[20] w-14 h-14 bg-white border border-stone-200 rounded-full flex items-center justify-center shadow-[0_4px_12px_rgba(0,0,0,0.10)] filter drop-shadow-md select-none"
                   >
                     <OptionIcon id={selectedProteina.id} className="w-10 h-10" />
                   </motion.div>
@@ -658,7 +658,7 @@ export const RamenBuilder: React.FC = () => {
                       animate={{ y: 0, opacity: 1, scale: 1 }}
                       exit={{ y: -250, opacity: 0 }}
                       transition={{ type: 'spring', damping: 10, delay: index * 0.08 }}
-                      className={`absolute z-[25] w-12 h-12 bg-white border-sticker rounded-full flex items-center justify-center shadow-sticker-sm filter drop-shadow-md select-none ${positions[index]}`}
+                      className={`absolute z-[25] w-12 h-12 bg-white border border-stone-200 rounded-full flex items-center justify-center shadow-[0_4px_12px_rgba(0,0,0,0.10)] filter drop-shadow-md select-none ${positions[index]}`}
                     >
                       <OptionIcon id={top.id} className="w-8 h-8" />
                     </motion.div>
@@ -669,10 +669,10 @@ export const RamenBuilder: React.FC = () => {
               {/* Ramen Bowl Shape Sticker with Japanese design */}
               <div
                 style={bowlStyle}
-                className="absolute bottom-6 left-[8%] right-[8%] h-28 border-sticker rounded-b-[4.5rem] bg-white shadow-sticker z-[30] flex flex-col justify-end pb-3 items-center overflow-hidden"
+                className="absolute bottom-6 left-[8%] right-[8%] h-28 border-2 border-stone-200 rounded-b-[4.5rem] bg-white shadow-[0_8px_32px_rgba(0,0,0,0.08)] z-[30] flex flex-col justify-end pb-3 items-center overflow-hidden"
               >
                 {/* Decorative border checker striping */}
-                <div className="absolute top-0 left-0 right-0 h-4 bg-[#FF4C4C] border-b-2 border-[#1C1917] flex justify-around items-center overflow-hidden">
+                <div className="absolute top-0 left-0 right-0 h-4 bg-[#FF4C4C] flex justify-around items-center overflow-hidden">
                   <div className="w-4 h-full bg-[#FFDE4D] rotate-12"></div>
                   <div className="w-4 h-full bg-[#FFDE4D] rotate-12"></div>
                   <div className="w-4 h-full bg-[#FFDE4D] rotate-12"></div>
@@ -683,7 +683,7 @@ export const RamenBuilder: React.FC = () => {
                   <div className="w-4 h-full bg-[#FFDE4D] rotate-12"></div>
                 </div>
 
-                <div className="w-full border-t-2 border-dashed border-[#1C1917]/20 pt-2 text-center font-fredoka text-[10px] font-black tracking-widest text-[#1C1917]/40 z-[10]">
+                <div className="w-full border-t-2 border-dashed border-[#FF4C4C]/50 pt-2 text-center font-fredoka text-[15px] font-black tracking-widest text-[#1C1917]/60 z-[10]">
                   KINOKO RAMEN HOUSE
                 </div>
               </div>
@@ -693,12 +693,12 @@ export const RamenBuilder: React.FC = () => {
             </div>
 
             {/* WEIGHT & PRICE INDICATORS */}
-            <div className="grid grid-cols-2 gap-4 border-t-3 border-dashed border-[#1C1917]/20 pt-4 font-fredoka">
-              <div className="p-3 bg-stone-50 border-sticker-sm rounded-2xl text-center">
+            <div className="grid grid-cols-2 gap-4 border-t border-dashed border-stone-200 pt-4 font-fredoka">
+              <div className="p-3 bg-stone-100 border border-stone-300 rounded-2xl text-center">
                 <span className="text-[10px] font-bold text-stone-400 block uppercase">Peso Estimado</span>
                 <span className="text-xl font-black text-[#1C1917]">{totalWeight}g</span>
               </div>
-              <div className="p-3 bg-[#FFDE4D]/10 border-sticker-sm rounded-2xl text-center">
+              <div className="p-3 bg-[#FFDE4D]/10 border border-[#E4CD3A]/30 rounded-2xl text-center">
                 <span className="text-[10px] font-bold text-stone-400 block uppercase">Precio Total</span>
                 <span className="text-xl font-black text-[#FF4C4C]">S/ {totalPrice.toFixed(2)}</span>
               </div>
@@ -706,14 +706,14 @@ export const RamenBuilder: React.FC = () => {
           </div>
 
           {/* Right Column: Steps Control */}
-          <div className="lg:col-span-7 flex flex-col justify-between bg-white border-sticker rounded-3xl p-6 shadow-sticker relative">
+          <div className="lg:col-span-7 flex flex-col justify-between bg-white border border-stone-300 rounded-3xl p-6 shadow-[8px_8px_rgba(0,0,0,0.10)] relative">
             
             {/* Step Indicators */}
             <div className="flex justify-between items-center mb-8 border-b-2 border-[#1C1917]/10 pb-4">
               {[1, 2, 3, 4].map((s) => (
                 <div key={s} className="flex items-center gap-2">
                   <div
-                    className={`w-8 h-8 rounded-full border-sticker-sm font-fredoka font-black flex items-center justify-center text-xs transition-colors ${
+                    className={`w-8 h-8 rounded-full border border-stone-200 font-fredoka font-bold flex items-center justify-center text-xs transition-colors shadow-sm ${
                       step === s
                         ? 'bg-[#FFDE4D] text-[#1C1917]'
                         : step > s
@@ -744,14 +744,14 @@ export const RamenBuilder: React.FC = () => {
               {step > 1 ? (
                 <button
                   onClick={prevStep}
-                  className="px-4 py-2 border-sticker-sm rounded-xl bg-white hover:bg-stone-50 font-fredoka font-black text-xs uppercase tracking-wider text-[#1C1917] cursor-pointer flex items-center gap-1.5"
+                  className="px-4 py-2 border border-stone-200 rounded-xl bg-white hover:bg-stone-50 shadow-sm font-fredoka font-medium text-xs uppercase tracking-wider text-[#1C1917] cursor-pointer flex items-center gap-1.5"
                 >
                   <ArrowLeft size={14} /> Atrás
                 </button>
               ) : (
                 <button
                   onClick={handleReset}
-                  className="px-4 py-2 border-sticker-sm rounded-xl bg-stone-100 hover:bg-stone-200 font-fredoka font-black text-xs uppercase tracking-wider text-stone-600 cursor-pointer flex items-center gap-1.5"
+                  className="px-4 py-2 border border-stone-200 rounded-xl bg-stone-100 hover:bg-stone-200 shadow-sm font-fredoka font-medium text-xs uppercase tracking-wider text-stone-600 cursor-pointer flex items-center gap-1.5"
                 >
                   <RefreshCw size={14} /> Reiniciar
                 </button>
@@ -761,10 +761,10 @@ export const RamenBuilder: React.FC = () => {
                 <button
                   onClick={nextStep}
                   disabled={(step === 1 && !selectedBase) || (step === 2 && !selectedProteina) || (step === 3 && selectedToppings.length === 0)}
-                  className={`px-5 py-2.5 border-sticker rounded-xl font-fredoka font-black text-xs uppercase tracking-wider shadow-sticker-sm cursor-pointer flex items-center gap-1.5 ${
+                  className={`px-5 py-2.5 border rounded-xl font-fredoka font-bold text-xs uppercase tracking-wider cursor-pointer flex items-center gap-1.5 transition-all ${
                     ((step === 1 && !selectedBase) || (step === 2 && !selectedProteina) || (step === 3 && selectedToppings.length === 0))
-                      ? 'bg-stone-200 text-stone-400 border-[#1C1917]/20 shadow-none cursor-not-allowed'
-                      : 'bg-[#FFDE4D] text-[#1C1917] hover:bg-[#FFDE4D]/80'
+                      ? 'bg-stone-200 text-stone-400 border-stone-200 shadow-none cursor-not-allowed'
+                      : 'bg-[#FFDE4D] text-[#1C1917] border-[#E4CD3A] shadow-[0_4px_12px_rgba(228,205,58,0.35)] hover:shadow-[0_6px_18px_rgba(228,205,58,0.45)]'
                   }`}
                 >
                   Siguiente <ArrowRight size={14} />
@@ -773,10 +773,10 @@ export const RamenBuilder: React.FC = () => {
                 <button
                   onClick={handleOrderWhatsApp}
                   disabled={!isComplete}
-                  className={`px-6 py-3 border-sticker rounded-2xl font-fredoka font-black text-sm uppercase tracking-wider shadow-sticker cursor-pointer flex items-center gap-2 transition-shadow ${
+                  className={`px-6 py-3 border rounded-2xl font-fredoka font-bold text-sm uppercase tracking-wider cursor-pointer flex items-center gap-2 transition-all ${
                     !isComplete
-                      ? 'bg-stone-200 text-stone-400 border-[#1C1917]/20 shadow-none cursor-not-allowed'
-                      : 'bg-[#25D366] text-white hover:shadow-sticker-lg'
+                      ? 'bg-stone-200 text-stone-400 border-stone-200 shadow-none cursor-not-allowed'
+                      : 'bg-[#25D366] text-white border-[#1fa855] shadow-[0_4px_16px_rgba(37,211,102,0.35)] hover:shadow-[0_6px_24px_rgba(37,211,102,0.45)]'
                   }`}
                 >
                   <MessageCircle size={18} className="fill-current" />

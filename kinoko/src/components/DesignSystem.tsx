@@ -71,7 +71,7 @@ export const Badge: React.FC<BadgeProps> = ({ type, className = '' }) => {
 
   return (
     <span
-      className={`inline-flex items-center gap-1.5 px-3 py-1 text-[10px] font-black tracking-wider uppercase border-sticker-sm rounded-xl shadow-sticker-sm ${styles[type]} ${className}`}
+      className={`inline-flex items-center gap-1.5 px-3 py-1 text-[10px] font-black tracking-wider uppercase rounded-full shadow-sm ${styles[type]} ${className}`}
       style={{ transform: `scale(0.95)` }}
     >
       {icons[type]}
@@ -124,7 +124,7 @@ export const ButtonWhatsApp: React.FC<ButtonWhatsAppProps> = ({ children, classN
       transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
       whileHover={{ y: -3, x: -3 }}
       whileTap={{ y: 1, x: 1 }}
-      className={`px-6 py-3 bg-[#25D366] text-white font-black uppercase tracking-wider rounded-2xl border-sticker shadow-sticker hover:shadow-sticker-lg cursor-pointer inline-flex items-center justify-center gap-2 ${className}`}
+      className={`px-5 py-2.5 bg-[#25D366] text-white font-bold tracking-wide rounded-full shadow-[0_4px_14px_rgba(37,211,102,0.35)] hover:shadow-[0_6px_20px_rgba(37,211,102,0.45)] cursor-pointer inline-flex items-center justify-center gap-2 transition-shadow duration-200 ${className}`}
       {...props}
     >
       <MessageCircle size={16} className="fill-current" />
@@ -144,19 +144,19 @@ interface QuantitySelectorProps {
 
 export const QuantitySelector: React.FC<QuantitySelectorProps> = ({ value, onChange, className = '' }) => {
   return (
-    <div className={`flex items-center gap-2 bg-stone-50 border-sticker-sm rounded-xl px-2 py-1 select-none ${className}`}>
+    <div className={`flex items-center gap-2 bg-stone-50 border border-stone-200 rounded-xl px-2 py-1 select-none ${className}`}>
       <button
         type="button"
         onClick={() => onChange(Math.max(1, value - 1))}
-        className="w-6 h-6 flex items-center justify-center bg-white border border-[#1C1917] rounded-lg hover:bg-stone-100 active:scale-95 cursor-pointer text-[#1C1917]"
+        className="w-6 h-6 flex items-center justify-center bg-white border border-stone-200 rounded-lg hover:bg-stone-100 active:scale-95 cursor-pointer text-[#1C1917] shadow-sm"
       >
         <Minus size={12} strokeWidth={3} />
       </button>
-      <span className="font-fredoka font-black text-sm w-4 text-center text-[#1C1917]">{value}</span>
+      <span className="font-fredoka font-bold text-sm w-4 text-center text-[#1C1917]">{value}</span>
       <button
         type="button"
         onClick={() => onChange(value + 1)}
-        className="w-6 h-6 flex items-center justify-center bg-white border border-[#1C1917] rounded-lg hover:bg-stone-100 active:scale-95 cursor-pointer text-[#1C1917]"
+        className="w-6 h-6 flex items-center justify-center bg-white border border-stone-200 rounded-lg hover:bg-stone-100 active:scale-95 cursor-pointer text-[#1C1917] shadow-sm"
       >
         <Plus size={12} strokeWidth={3} />
       </button>
@@ -182,7 +182,7 @@ export const SearchInput: React.FC<SearchInputProps> = ({ value, onChange, place
         value={value}
         onChange={onChange}
         placeholder={placeholder}
-        className="w-full pl-10 pr-4 py-3 bg-white font-outfit font-bold text-sm text-[#1C1917] placeholder-[#1C1917]/40 border-sticker rounded-2xl shadow-sticker focus:outline-none focus:ring-0 focus:shadow-sticker-lg transition-all"
+        className="w-full pl-10 pr-4 py-3 bg-white font-outfit font-medium text-sm text-[#1C1917] placeholder-[#1C1917]/40 border border-stone-200 rounded-2xl shadow-[0_2px_12px_rgba(0,0,0,0.04)] focus:outline-none focus:ring-0 focus:border-stone-300 focus:shadow-[0_4px_16px_rgba(0,0,0,0.08)] transition-all"
       />
       <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#1C1917]/50" size={16} strokeWidth={3} />
     </div>
@@ -263,7 +263,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   return (
     <motion.div
       whileHover={{ y: -5 }}
-      className="bg-white border-sticker rounded-3xl p-4 shadow-sticker hover:shadow-sticker-lg transition-all flex flex-col justify-between h-full relative select-none"
+      className="bg-white border border-stone-100 rounded-[28px] p-5 shadow-[0_4px_24px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.08)] transition-all flex flex-col justify-between h-full relative select-none"
     >
       {/* Sticker Badge */}
       {tag && (
@@ -273,12 +273,12 @@ export const ProductCard: React.FC<ProductCardProps> = ({
       )}
 
       {/* Image frame */}
-      <div className="bg-[#FDFBF7] border-sticker rounded-2xl p-4 h-48 flex items-center justify-center relative overflow-hidden mb-4 select-none">
+      <div className="bg-[#FDFBF7] border border-stone-100 rounded-[20px] p-4 h-48 flex items-center justify-center relative overflow-hidden mb-5 select-none">
         <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(#e5e7eb_2px,transparent_2px)] [background-size:12px_12px]"></div>
         <img
           src={image}
           alt={name}
-          className="max-h-full max-w-full object-contain filter drop-shadow-[0_8px_8px_rgba(0,0,0,0.08)] transform group-hover:scale-105 transition-transform duration-300 animate-float-cute"
+          className="max-h-full max-w-full object-contain filter drop-shadow-[0_8px_16px_rgba(0,0,0,0.06)] transform group-hover:scale-105 transition-transform duration-300 animate-float-cute"
         />
       </div>
 
@@ -288,7 +288,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           <span className="text-[10px] font-black uppercase tracking-widest text-[#FF4C4C] flex items-center gap-1 mb-1">
             <Tag size={10} className="fill-current" /> {category}
           </span>
-          <h3 className="font-fredoka text-lg font-black text-[#1C1917] leading-tight hover:text-[#FF4C4C] transition-colors line-clamp-2">
+          <h3 className="font-fredoka text-lg font-bold text-[#1C1917] leading-tight hover:text-[#FF4C4C] transition-colors line-clamp-2">
             {name}
           </h3>
         </div>
@@ -296,7 +296,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         <div className="flex flex-col gap-3 pt-2">
           {/* Price & Quantity */}
           <div className="flex items-center justify-between">
-            <span className="text-xl font-fredoka font-black text-[#FF4C4C]">
+            <span className="text-xl font-fredoka font-bold text-[#FF4C4C]">
               S/ {price.toFixed(2)}
             </span>
             <QuantitySelector value={qty} onChange={setQty} />
@@ -310,7 +310,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
               const url = `https://wa.me/51934421442?text=${encodeURIComponent(text)}`;
               window.open(url, '_blank');
             }}
-            className="w-full py-2.5 bg-[#FFDE4D] text-[#1C1917] text-xs font-black uppercase tracking-widest rounded-xl border-sticker shadow-sticker-sm active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all cursor-pointer text-center"
+            className="w-full py-2.5 bg-[#FFDE4D] text-[#1C1917] text-xs font-bold uppercase tracking-widest rounded-xl shadow-[0_4px_12px_rgba(255,222,77,0.4)] hover:shadow-[0_6px_16px_rgba(255,222,77,0.5)] active:translate-y-[1px] active:shadow-sm transition-all cursor-pointer text-center"
           >
             Pedir por WhatsApp
           </button>

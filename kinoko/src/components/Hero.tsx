@@ -13,8 +13,15 @@ export const Hero: React.FC = () => {
 
   return (
     <section id="inicio" className="relative py-12 md:py-24 overflow-hidden select-none bg-[#FDFBF7]">
-      {/* Background polka dots */}
-      <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[radial-gradient(#1c1917_2px,transparent_2px)] [background-size:16px_16px]"></div>
+      {/* Background waves */}
+      <div 
+        className="absolute inset-0 opacity-70 pointer-events-none"
+        style={{ 
+          backgroundImage: "url('/waves_bg.jpeg')", 
+          backgroundSize: "cover", 
+          backgroundPosition: "center" 
+        }}
+      ></div>
 
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
         
@@ -38,7 +45,7 @@ export const Hero: React.FC = () => {
           </h1>
 
           {/* Subtitle */}
-          <p className="font-outfit text-base sm:text-lg lg:text-xl font-bold text-[#1C1917]/70 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+          <p className="font-outfit text-base sm:text-lg lg:text-xl font-bold text-[#1C1917] bg-white/10 backdrop-blur-sm border border-white/0 shadow-[0_4px_24px_rgba(255,255,255,0.25)] p-4 sm:p-5 rounded-2xl max-w-xl mx-auto lg:mx-0 leading-relaxed">
             Snacks japoneses importados, ramen personalizado para armar como un profesional, y bebidas asiáticas originales como Bubble Tea natural. ¡Visítanos frente a la UTP!
           </p>
 
