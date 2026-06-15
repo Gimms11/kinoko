@@ -1,0 +1,91 @@
+@import "tailwindcss";
+
+@theme {
+  --font-fredoka: "Fredoka", sans-serif;
+  --font-outfit: "Outfit", sans-serif;
+  --color-primary: #FFDE4D;
+  --color-secondary: #FF4C4C;
+  --color-dark: #1C1917;
+  --color-cream: #FDFBF7;
+}
+
+/* Custom Utilities for Kawaii Neobrutalism (Sticker Style) */
+@utility font-fredoka {
+  font-family: var(--font-fredoka);
+}
+
+@utility font-outfit {
+  font-family: var(--font-outfit);
+}
+
+@utility border-sticker {
+  border: 3px solid var(--color-dark);
+}
+
+@utility border-sticker-sm {
+  border: 2px solid var(--color-dark);
+}
+
+@utility shadow-sticker {
+  box-shadow: 4px 4px 0px 0px var(--color-dark);
+}
+
+@utility shadow-sticker-lg {
+  box-shadow: 7px 7px 0px 0px var(--color-dark);
+}
+
+@utility shadow-sticker-sm {
+  box-shadow: 2px 2px 0px 0px var(--color-dark);
+}
+
+@utility shadow-sticker-green {
+  box-shadow: 4px 4px 0px 0px #15803d;
+}
+
+@utility active-sticker-press {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px 0px var(--color-dark);
+}
+
+@utility active-sticker-press-lg {
+  transform: translate(4px, 4px);
+  box-shadow: 3px 3px 0px 0px var(--color-dark);
+}
+
+body {
+  font-family: var(--font-outfit);
+  background-color: var(--color-cream);
+  color: var(--color-dark);
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-fredoka);
+}
+
+/* Custom kawaii float animations */
+@keyframes float-kawaii {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(2deg);
+  }
+}
+
+@keyframes float-kawaii-delayed {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(-3deg);
+  }
+}
+
+@utility animate-float-cute {
+  animation: float-kawaii 5s ease-in-out infinite;
+}
+
+@utility animate-float-cute-delay {
+  animation: float-kawaii-delayed 6s ease-in-out infinite;
+}
