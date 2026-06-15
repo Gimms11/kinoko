@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Mail, Phone, MapPin, Clock, Send, CheckCircle, MessageCircle, Sparkles } from 'lucide-react';
+import { Phone, MapPin, Clock, Send, CheckCircle, MessageCircle, Sparkles } from 'lucide-react';
 import { ContactInput } from './DesignSystem';
 import { Footer } from './Footer';
 import confetti from 'canvas-confetti';

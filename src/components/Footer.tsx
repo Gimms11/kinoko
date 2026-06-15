@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Phone, Mail } from 'lucide-react';
-import { MushroomLogo } from './DesignSystem';
 
 export const Footer: React.FC = () => {
   return (

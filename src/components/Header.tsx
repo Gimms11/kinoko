@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
-import { ButtonWhatsApp, MushroomLogo } from './DesignSystem';
+import { ButtonWhatsApp } from './DesignSystem';
 
 export const Header: React.FC = () => {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
