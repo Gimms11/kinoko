@@ -114,7 +114,7 @@ export const NosotrosContacto: React.FC = () => {
                   <span className="p-2 bg-[#FFDE4D] border-sticker-sm rounded-xl text-[#1C1917] flex-shrink-0">
                     <MapPin size={16} />
                   </span>
-                  <span>Av. Los Tulipanes (Frente a la UTP), Ica, Perú</span>
+                  <span>Av. Ayabaca 1037 (Al frente de la UTP), Ica, Perú</span>
                 </p>
                 <p className="flex items-center gap-3">
                   <span className="p-2 bg-[#FF4C4C] border-sticker-sm rounded-xl text-white flex-shrink-0">
@@ -135,7 +135,7 @@ export const NosotrosContacto: React.FC = () => {
             <div className="rounded-[24px] overflow-hidden shadow-md h-64 bg-stone-100 relative">
               <iframe
                 title="Mapa de Ubicación de Kinoko"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.480036662453!2d-75.7268874!3d-14.0782352!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTTCsDA0JzQxLjYiUyA3NcKwNDMnMzYuOCJX!5e0!3m2!1ses-419!2spe!4v1700000000000!5m2!1ses-419!2spe"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.4443213039755!2d-75.73857162444583!3d-14.07090498634898!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9110e3f2df00cad9%3A0x1cf4e3c88c155a5c!2sKinoko%20Asian%20Market!5e0!3m2!1ses-419!2spe!4v1718465600000!5m2!1ses-419!2spe"
                 className="w-full h-full border-0 grayscale hover:grayscale-0 transition-all"
                 allowFullScreen
                 loading="lazy"

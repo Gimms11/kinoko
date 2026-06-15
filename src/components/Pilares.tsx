@@ -366,7 +366,7 @@ export const Pilares: React.FC = () => {
         >
           <div className="h-px flex-1 max-w-[80px] bg-[#1C1917]/15 rounded-full" />
           <span className="text-[#1C1917]/40 text-xs font-bold uppercase tracking-widest">
-            Frente a la UTP · Lima, Perú
+            Av. Ayabaca 1037 (Al frente de la UTP) · Ica, Perú
           </span>
           <div className="h-px flex-1 max-w-[80px] bg-[#1C1917]/15 rounded-full" />
         </motion.div>

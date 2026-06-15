@@ -509,7 +509,7 @@ export const RamenBuilder: React.FC = () => {
                     <MushroomLogo className="w-5 h-5" />
                     Kinoko Ramen House
                   </div>
-                  <div className="text-[9px] opacity-60 uppercase">Av. Los Tulipanes - Frente a la UTP</div>
+                  <div className="text-[9px] opacity-60 uppercase">Av. Ayabaca 1037 - Al frente de la UTP</div>
                 </div>
 
                 <div className="border-b border-dashed border-[#1C1917]/25 pb-2 pt-1 space-y-1">

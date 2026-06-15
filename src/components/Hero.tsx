@@ -46,7 +46,7 @@ export const Hero: React.FC = () => {
 
           {/* Subtitle */}
           <p className="font-outfit text-base sm:text-lg lg:text-xl font-bold text-[#1C1917] bg-white/10 backdrop-blur-sm border border-white/0 shadow-[0_4px_24px_rgba(255,255,255,0.25)] p-4 sm:p-5 rounded-2xl max-w-xl mx-auto lg:mx-0 leading-relaxed">
-            Snacks japoneses importados, ramen personalizado para armar como un profesional, y bebidas asiáticas originales como Bubble Tea natural. ¡Visítanos frente a la UTP!
+            Snacks japoneses importados, ramen personalizado para armar como un profesional, y bebidas asiáticas originales como Bubble Tea natural. ¡Visítanos al frente de la UTP!
           </p>
 
           {/* CTAs */}

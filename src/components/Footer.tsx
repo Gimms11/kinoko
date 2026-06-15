@@ -35,7 +35,7 @@ export const Footer: React.FC = () => {
         <div className="space-y-4 font-outfit">
           <h4 className="font-fredoka text-xs font-black tracking-widest uppercase opacity-60">Ubicación Fija</h4>
           <p className="text-sm font-bold flex items-center gap-2">
-            Av. Los Tulipanes (Frente a la UTP), Ica, Perú
+            Av. Ayabaca 1037 (Al frente de la UTP), Ica, Perú
           </p>
           <div className="text-[10px] font-black uppercase text-stone-600">
             A un paso del campus universitario
