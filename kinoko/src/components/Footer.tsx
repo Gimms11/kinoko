@@ -18,7 +18,13 @@ export const Footer: React.FC = () => {
                 backgroundPosition: "center" 
               }}
             >
-              <img src="/Mascota.png" alt="Mascota Kinoko" className="w-9 h-9 object-contain filter drop-shadow-[0_2px_4px_rgba(0,0,0,0.15)] animate-float-cute" style={{ animationDuration: '3s' }} />
+              <motion.img 
+                src="/Mascota.png" 
+                alt="Mascota Kinoko" 
+                className="w-9 h-9 object-contain filter drop-shadow-[0_2px_4px_rgba(0,0,0,0.15)] mt-1.5" 
+                animate={{ y: [0, -3, 0] }}
+                transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
+              />
             </div>
             Kinoko
           </h3>
