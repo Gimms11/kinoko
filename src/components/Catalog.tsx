@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { SearchInput, ProductCard } from './DesignSystem';
-import { ShoppingBag, Soup, CupSoda, Cookie, Candy } from 'lucide-react';
+import { ShoppingBag, Soup, CupSoda, Cookie, Candy, ChevronLeft, ChevronRight } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
 interface Product {
@@ -16,6 +16,9 @@ interface Product {
 export const Catalog: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [activeCategory, setActiveCategory] = useState<'todos' | 'ramen' | 'bebidas' | 'snacks' | 'dulces'>('todos');
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const ITEMS_PER_PAGE = 8;
 
   const MOCK_PRODUCTS: Product[] = [
     { id: 1, name: 'Ramen Buldak Carbonara', price: 13.50, category: 'ramen', tag: 'popular', image: '/ramen_bowl_sticker.png' },
@@ -90,6 +93,12 @@ export const Catalog: React.FC = () => {
     return matchesCategory && matchesSearch;
   });
 
+  const totalPages = Math.ceil(filteredProducts.length / ITEMS_PER_PAGE);
+  const paginatedProducts = filteredProducts.slice(
+    (currentPage - 1) * ITEMS_PER_PAGE,
+    currentPage * ITEMS_PER_PAGE
+  );
+
   return (
     <section id="catalogo" className="pt-24 pb-36 md:pb-44 bg-transparent select-none">
       <div className="max-w-7xl mx-auto px-6">
@@ -110,7 +119,10 @@ export const Catalog: React.FC = () => {
           <div className="w-full md:w-80">
             <SearchInput
               value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
+              onChange={(e) => {
+                setSearchTerm(e.target.value);
+                setCurrentPage(1);
+              }}
               placeholder="Buscar snacks, ramen..."
             />
           </div>
@@ -122,7 +134,10 @@ export const Catalog: React.FC = () => {
             <button
               key={cat.id}
               data-filter={cat.id}
-              onClick={() => setActiveCategory(cat.id)}
+              onClick={() => {
+                setActiveCategory(cat.id);
+                setCurrentPage(1);
+              }}
               className={`px-5 py-2 text-sm font-bold rounded-full border transition-all tracking-wide flex items-center gap-2 ${
                 activeCategory === cat.id
                   ? 'bg-[#FFDE4D] text-[#1C1917] border-[#FFDE4D] shadow-[0_4px_12px_rgba(255,222,77,0.3)]'
@@ -137,32 +152,81 @@ export const Catalog: React.FC = () => {
 
         {/* Products Grid */}
         <AnimatePresence mode="popLayout">
-          {filteredProducts.length > 0 ? (
-            <motion.div
-              layout
-              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
-            >
-              {filteredProducts.map((product) => (
-                <motion.div
-                  key={product.id}
-                  layout
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.9 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <ProductCard
-                    id={product.id}
-                    name={product.name}
-                    price={product.price}
-                    category={product.category}
-                    image={product.image}
-                    tag={product.tag}
-                    onOrder={handleOrderNotification}
-                  />
-                </motion.div>
-              ))}
-            </motion.div>
+          {paginatedProducts.length > 0 ? (
+            <>
+              <motion.div
+                layout
+                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+              >
+                {paginatedProducts.map((product) => (
+                  <motion.div
+                    key={product.id}
+                    layout
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.9 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <ProductCard
+                      id={product.id}
+                      name={product.name}
+                      price={product.price}
+                      category={product.category}
+                      image={product.image}
+                      tag={product.tag}
+                      onOrder={handleOrderNotification}
+                    />
+                  </motion.div>
+                ))}
+              </motion.div>
+
+              {/* Controles de Paginación */}
+              {totalPages > 1 && (
+                <div className="flex flex-wrap items-center justify-center gap-3 mt-12 select-none">
+                  <button
+                    onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+                    disabled={currentPage === 1}
+                    className={`px-4 py-2.5 text-sm font-fredoka font-bold rounded-2xl border transition-all flex items-center gap-1.5 ${
+                      currentPage === 1
+                        ? 'bg-stone-50 text-stone-300 border-stone-100 cursor-not-allowed'
+                        : 'bg-white text-stone-700 border-stone-200 hover:bg-stone-50 hover:border-stone-300 cursor-pointer shadow-sm hover:scale-102 active:scale-98'
+                    }`}
+                  >
+                    <ChevronLeft size={16} strokeWidth={3} />
+                    <span>Anterior</span>
+                  </button>
+
+                  <div className="flex items-center gap-1.5">
+                    {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                      <button
+                        key={page}
+                        onClick={() => setCurrentPage(page)}
+                        className={`w-10 h-10 flex items-center justify-center text-sm font-fredoka font-bold rounded-2xl border transition-all ${
+                          currentPage === page
+                            ? 'bg-[#FFDE4D] text-[#1C1917] border-[#FFDE4D] shadow-[0_4px_12px_rgba(255,222,77,0.3)] scale-105'
+                            : 'bg-white text-stone-500 border-stone-200 hover:bg-stone-50 hover:text-stone-800 hover:border-stone-300 cursor-pointer shadow-sm hover:scale-105 active:scale-95'
+                        }`}
+                      >
+                        {page}
+                      </button>
+                    ))}
+                  </div>
+
+                  <button
+                    onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+                    disabled={currentPage === totalPages}
+                    className={`px-4 py-2.5 text-sm font-fredoka font-bold rounded-2xl border transition-all flex items-center gap-1.5 ${
+                      currentPage === totalPages
+                        ? 'bg-stone-50 text-stone-300 border-stone-100 cursor-not-allowed'
+                        : 'bg-white text-stone-700 border-stone-200 hover:bg-stone-50 hover:border-stone-300 cursor-pointer shadow-sm hover:scale-102 active:scale-98'
+                    }`}
+                  >
+                    <span>Siguiente</span>
+                    <ChevronRight size={16} strokeWidth={3} />
+                  </button>
+                </div>
+              )}
+            </>
           ) : (
             // Empty State (Kawaii speech bubble styling)
             <motion.div
