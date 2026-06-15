@@ -1,0 +1,2973 @@
+This file is a merged representation of the entire codebase, combined into a single document by Repomix.
+
+<file_summary>
+This section contains a summary of this file.
+
+<purpose>
+This file contains a packed representation of the entire repository's contents.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+</purpose>
+
+<file_format>
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Repository files (if enabled)
+5. Multiple file entries, each consisting of:
+  - File path as an attribute
+  - Full contents of the file
+</file_format>
+
+<usage_guidelines>
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+</usage_guidelines>
+
+<notes>
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Files are sorted by Git change count (files with more changes are at the bottom)
+</notes>
+
+</file_summary>
+
+<directory_structure>
+.gitignore
+eslint.config.js
+index.html
+package.json
+public/bubble_tea_sticker.png
+public/mascota_celebrating.png
+public/mascota_cooking.png
+public/mascota_waving.png
+public/Mascota.png
+public/mochis_sticker.png
+public/pocky_box_sticker.png
+public/ramen_bowl_sticker.png
+public/waves_bg.jpeg
+README.md
+src/components/Catalog.tsx
+src/components/DesignSystem.tsx
+src/components/Header.tsx
+src/components/Hero.tsx
+src/components/NosotrosContacto.tsx
+src/components/Pilares.tsx
+src/components/Promociones.tsx
+src/components/RamenBuilder.tsx
+src/index.css
+src/KinokoLanding.tsx
+src/main.tsx
+tsconfig.app.json
+tsconfig.json
+tsconfig.node.json
+vite.config.ts
+</directory_structure>
+
+<files>
+This section contains the contents of the repository's files.
+
+<file path=".gitignore">
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+</file>
+
+<file path="eslint.config.js">
+import js from '@eslint/js'
+import globals from 'globals'
+import reactHooks from 'eslint-plugin-react-hooks'
+import reactRefresh from 'eslint-plugin-react-refresh'
+import tseslint from 'typescript-eslint'
+import { defineConfig, globalIgnores } from 'eslint/config'
+
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      js.configs.recommended,
+      tseslint.configs.recommended,
+      reactHooks.configs.flat.recommended,
+      reactRefresh.configs.vite,
+    ],
+    languageOptions: {
+      globals: globals.browser,
+    },
+  },
+])
+</file>
+
+<file path="index.html">
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/logo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kinoko Asian Market | Tu rincón asiático en Ica</title>
+    <!-- Google Fonts: Fredoka & Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+  </head>
+  <body class="bg-[#FDFBF7] text-[#1C1917]">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+</file>
+
+<file path="package.json">
+{
+  "name": "kinoko",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.3.1",
+    "canvas-confetti": "^1.9.4",
+    "framer-motion": "^12.40.0",
+    "lucide-react": "^1.18.0",
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6",
+    "tailwindcss": "^4.3.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.29.0",
+    "@eslint/js": "^10.0.1",
+    "@rolldown/plugin-babel": "^0.2.3",
+    "@types/babel__core": "^7.20.5",
+    "@types/canvas-confetti": "^1.9.0",
+    "@types/node": "^24.12.3",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.1",
+    "babel-plugin-react-compiler": "^1.0.0",
+    "eslint": "^10.3.0",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-react-refresh": "^0.5.2",
+    "globals": "^17.6.0",
+    "typescript": "~6.0.2",
+    "typescript-eslint": "^8.59.2",
+    "vite": "^8.0.12"
+  }
+}
+</file>
+
+<file path="README.md">
+# React + TypeScript + Vite
+
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+
+Currently, two official plugins are available:
+
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+
+## React Compiler
+
+The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+
+Note: This will impact Vite dev & build performances.
+
+## Expanding the ESLint configuration
+
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+
+```js
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+
+      // Remove tseslint.configs.recommended and replace with this
+      tseslint.configs.recommendedTypeChecked,
+      // Alternatively, use this for stricter rules
+      tseslint.configs.strictTypeChecked,
+      // Optionally, add this for stylistic rules
+      tseslint.configs.stylisticTypeChecked,
+
+      // Other configs...
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
+```
+
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
+
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+      // Enable lint rules for React
+      reactX.configs['recommended-typescript'],
+      // Enable lint rules for React DOM
+      reactDom.configs.recommended,
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
+```
+</file>
+
+<file path="src/components/Catalog.tsx">
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { SearchInput, ProductCard } from './DesignSystem';
+import { ShoppingBag, Soup, CupSoda, Cookie, Candy } from 'lucide-react';
+import confetti from 'canvas-confetti';
+
+interface Product {
+  id: number;
+  name: string;
+  price: number;
+  category: 'ramen' | 'bebidas' | 'snacks' | 'dulces';
+  image: string;
+  tag?: 'nuevo' | 'popular' | 'importado' | 'oferta';
+}
+
+export const Catalog: React.FC = () => {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [activeCategory, setActiveCategory] = useState<'todos' | 'ramen' | 'bebidas' | 'snacks' | 'dulces'>('todos');
+
+  const MOCK_PRODUCTS: Product[] = [
+    { id: 1, name: 'Ramen Buldak Carbonara', price: 13.50, category: 'ramen', tag: 'popular', image: '/ramen_bowl_sticker.png' },
+    { id: 2, name: 'Ramen Shin Ramyun Red', price: 11.50, category: 'ramen', tag: 'nuevo', image: '/ramen_bowl_sticker.png' },
+    { id: 3, name: 'Bubble Tea Matcha Green Tea', price: 15.00, category: 'bebidas', tag: 'popular', image: '/bubble_tea_sticker.png' },
+    { id: 4, name: 'Bubble Tea Taro Milk Tea', price: 14.50, category: 'bebidas', image: '/bubble_tea_sticker.png' },
+    { id: 5, name: 'Pocky Matcha Green Tea', price: 8.50, category: 'snacks', tag: 'importado', image: '/pocky_box_sticker.png' },
+    { id: 6, name: 'Pocky Strawberry Classic', price: 8.50, category: 'snacks', image: '/pocky_box_sticker.png' },
+    { id: 7, name: 'Mochis Surtidos Frutales', price: 12.00, category: 'dulces', tag: 'oferta', image: '/mochis_sticker.png' },
+    { id: 8, name: 'Mochi de Chocolate Trufa', price: 14.00, category: 'dulces', image: '/mochis_sticker.png' },
+    { id: 9, name: 'Soda de Melón Sangaria', price: 9.50, category: 'bebidas', image: '/bubble_tea_sticker.png' },
+    { id: 10, name: 'Ramune Original Soda', price: 12.50, category: 'bebidas', tag: 'popular', image: '/bubble_tea_sticker.png' },
+    { id: 11, name: 'Chips de Camote Miel Coreano', price: 7.50, category: 'snacks', image: '/pocky_box_sticker.png' },
+    { id: 12, name: 'Pepero Almendras Choco', price: 9.00, category: 'snacks', tag: 'nuevo', image: '/pocky_box_sticker.png' },
+    { id: 13, name: 'Gelatina Konjac de Lichi', price: 6.50, category: 'dulces', image: '/mochis_sticker.png' },
+    { id: 14, name: 'Ramen Nissin Yakisoba U.F.O.', price: 14.00, category: 'ramen', image: '/ramen_bowl_sticker.png' },
+    { id: 15, name: 'Bebida Té Oolong Chino', price: 8.00, category: 'bebidas', image: '/bubble_tea_sticker.png' },
+    { id: 16, name: 'Galletas Koala No March Lotte', price: 7.00, category: 'snacks', tag: 'popular', image: '/pocky_box_sticker.png' },
+    { id: 17, name: 'Calpis Water Soda Japonesa', price: 11.00, category: 'bebidas', image: '/bubble_tea_sticker.png' },
+    { id: 18, name: 'Papas Alga Nori Lays Asia', price: 9.50, category: 'snacks', tag: 'nuevo', image: '/pocky_box_sticker.png' },
+    { id: 19, name: 'Ramen Jin Spicy Cup', price: 10.50, category: 'ramen', image: '/ramen_bowl_sticker.png' },
+    { id: 20, name: 'Gomitas de Uva Kasugai', price: 9.00, category: 'dulces', tag: 'importado', image: '/mochis_sticker.png' },
+  ];
+
+  const handleOrderNotification = () => {
+    confetti({
+      particleCount: 50,
+      angle: 60,
+      spread: 55,
+      origin: { x: 0 },
+      colors: ['#FFDE4D', '#FF4C4C', '#25D366']
+    });
+    confetti({
+      particleCount: 50,
+      angle: 120,
+      spread: 55,
+      origin: { x: 1 },
+      colors: ['#FFDE4D', '#FF4C4C', '#25D366']
+    });
+  };
+
+  const categories: Array<{ id: typeof activeCategory; name: string }> = [
+    { id: 'todos', name: 'TODOS' },
+    { id: 'ramen', name: 'RAMEN' },
+    { id: 'bebidas', name: 'BEBIDAS' },
+    { id: 'snacks', name: 'SNACKS' },
+    { id: 'dulces', name: 'DULCES' },
+  ];
+
+  const getCategoryIcon = (catId: typeof activeCategory) => {
+    const iconSize = 14;
+    switch (catId) {
+      case 'todos':
+        return <ShoppingBag size={iconSize} />;
+      case 'ramen':
+        return <Soup size={iconSize} />;
+      case 'bebidas':
+        return <CupSoda size={iconSize} />;
+      case 'snacks':
+        return <Cookie size={iconSize} />;
+      case 'dulces':
+        return <Candy size={iconSize} />;
+      default:
+        return null;
+    }
+  };
+
+  const filteredProducts = MOCK_PRODUCTS.filter((product) => {
+    const matchesCategory = activeCategory === 'todos' || product.category === activeCategory;
+    const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                          product.category.toLowerCase().includes(searchTerm.toLowerCase());
+    return matchesCategory && matchesSearch;
+  });
+
+  return (
+    <section id="catalogo" className="py-24 bg-stone-50 select-none">
+      <div className="max-w-7xl mx-auto px-6">
+        
+        {/* Section Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+          <div className="space-y-4 text-center md:text-left">
+            <span className="text-[#FF4C4C] font-black uppercase tracking-widest text-xs flex items-center justify-center md:justify-start gap-1.5 mb-1">
+              <ShoppingBag size={14} className="fill-current" /> EXPLORA NUESTRO STOCK
+            </span>
+            <h2 className="font-fredoka text-3xl sm:text-4xl font-black text-[#1C1917]">
+              Favoritos del Market
+            </h2>
+            <div className="h-1 w-16 bg-[#FFDE4D] rounded-full mx-auto md:mx-0 mt-6"></div>
+          </div>
+
+          {/* Search bar */}
+          <div className="w-full md:w-80">
+            <SearchInput
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              placeholder="Buscar snacks, ramen..."
+            />
+          </div>
+        </div>
+
+        {/* Filter categories buttons */}
+        <div className="flex flex-wrap justify-center md:justify-start gap-3 mb-10">
+          {categories.map((cat) => (
+            <button
+              key={cat.id}
+              data-filter={cat.id}
+              onClick={() => setActiveCategory(cat.id)}
+              className={`px-5 py-2 text-sm font-bold rounded-full border transition-all tracking-wide flex items-center gap-2 ${
+                activeCategory === cat.id
+                  ? 'bg-[#FFDE4D] text-[#1C1917] border-[#FFDE4D] shadow-[0_4px_12px_rgba(255,222,77,0.3)]'
+                  : 'bg-white text-stone-500 border-stone-200 hover:bg-stone-100 hover:text-stone-800 hover:border-stone-300 cursor-pointer shadow-sm'
+              }`}
+            >
+              {getCategoryIcon(cat.id)}
+              {cat.name}
+            </button>
+          ))}
+        </div>
+
+        {/* Products Grid */}
+        <AnimatePresence mode="popLayout">
+          {filteredProducts.length > 0 ? (
+            <motion.div
+              layout
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+            >
+              {filteredProducts.map((product) => (
+                <motion.div
+                  key={product.id}
+                  layout
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <ProductCard
+                    id={product.id}
+                    name={product.name}
+                    price={product.price}
+                    category={product.category}
+                    image={product.image}
+                    tag={product.tag}
+                    onOrder={handleOrderNotification}
+                  />
+                </motion.div>
+              ))}
+            </motion.div>
+          ) : (
+            // Empty State (Kawaii speech bubble styling)
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 20 }}
+              className="flex flex-col items-center justify-center py-16 text-center max-w-md mx-auto"
+            >
+              <div className="relative mb-6">
+                {/* Speech bubble */}
+                <div className="bg-white border border-stone-200 p-5 rounded-2xl shadow-lg font-fredoka font-bold text-sm text-[#1C1917] relative mb-6">
+                  ¡Ups! No encontramos ningún producto... <br />
+                  <span className="text-stone-400 font-medium">¿Probamos con otra palabra?</span>
+                  <div className="absolute w-4 h-4 bg-white border-r border-b border-stone-200 bottom-[-9px] left-1/2 -translate-x-1/2 rotate-[45deg]"></div>
+                </div>
+                {/* Mascot waving sticker */}
+                <img src="/mascota_waving.png" alt="Mascota" className="w-40 h-40 object-contain mx-auto filter drop-shadow-xl" />
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+      </div>
+    </section>
+  );
+};
+</file>
+
+<file path="src/components/DesignSystem.tsx">
+import React from 'react';
+import { motion, type HTMLMotionProps } from 'framer-motion';
+import { Search, Plus, Minus, MessageCircle, Sparkles, Flame, Globe, Gift, Tag, ArrowRight } from 'lucide-react';
+
+// ==========================================
+// 0. LOGO (Custom Kawaii Mushroom)
+// ==========================================
+export const MushroomLogo: React.FC<{ className?: string }> = ({ className = 'w-8 h-8' }) => {
+  return (
+    <svg viewBox="0 0 100 100" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
+      {/* Stem (pie) */}
+      <path
+        d="M35 55 C35 75, 40 85, 50 85 C60 85, 65 75, 65 55"
+        fill="#FDFBF7"
+        stroke="#1C1917"
+        strokeWidth="6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      {/* Mushroom Cap (sombrero) */}
+      <path
+        d="M15 55 C15 25, 85 25, 85 55 C85 58, 75 58, 50 58 C25 58, 15 58, 15 55 Z"
+        fill="#FF4C4C"
+        stroke="#1C1917"
+        strokeWidth="6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      {/* Yellow spots (motas) */}
+      <circle cx="35" cy="38" r="7" fill="#FFDE4D" stroke="#1C1917" strokeWidth="4" />
+      <circle cx="65" cy="38" r="6" fill="#FFDE4D" stroke="#1C1917" strokeWidth="4" />
+      <circle cx="50" cy="48" r="5" fill="#FFDE4D" stroke="#1C1917" strokeWidth="4" />
+      {/* Cute eyes */}
+      <circle cx="43" cy="70" r="3" fill="#1C1917" />
+      <circle cx="57" cy="70" r="3" fill="#1C1917" />
+      {/* Smile */}
+      <path d="M48 74 Q50 76 52 74" stroke="#1C1917" strokeWidth="3" strokeLinecap="round" />
+    </svg>
+  );
+};
+
+// ==========================================
+// 1. BADGES (Stickers)
+// ==========================================
+interface BadgeProps {
+  type: 'nuevo' | 'popular' | 'importado' | 'oferta';
+  className?: string;
+}
+
+export const Badge: React.FC<BadgeProps> = ({ type, className = '' }) => {
+  const styles = {
+    nuevo: 'bg-[#FF4C4C] text-white rotate-[-3deg]',
+    popular: 'bg-[#FFDE4D] text-[#1C1917] rotate-[2deg]',
+    importado: 'bg-indigo-400 text-white rotate-[-2deg]',
+    oferta: 'bg-emerald-500 text-white rotate-[3deg]',
+  };
+
+  const icons = {
+    nuevo: <Sparkles size={10} className="fill-current inline" />,
+    popular: <Flame size={10} className="fill-current inline" />,
+    importado: <Globe size={10} className="inline" />,
+    oferta: <Gift size={10} className="inline" />,
+  };
+
+  const labels = {
+    nuevo: 'NUEVO',
+    popular: 'POPULAR',
+    importado: 'IMPORTADO',
+    oferta: 'OFERTA',
+  };
+
+  return (
+    <span
+      className={`inline-flex items-center gap-1.5 px-3 py-1 text-[10px] font-black tracking-wider uppercase rounded-full shadow-sm ${styles[type]} ${className}`}
+      style={{ transform: `scale(0.95)` }}
+    >
+      {icons[type]}
+      <span>{labels[type]}</span>
+    </span>
+  );
+};
+
+// ==========================================
+// 2. BUTTONS
+// ==========================================
+interface ButtonProps extends HTMLMotionProps<'button'> {
+  children: React.ReactNode;
+}
+
+export const ButtonPrimary: React.FC<ButtonProps> = ({ children, className = '', ...props }) => {
+  return (
+    <motion.button
+      whileHover={{ y: -3, x: -3 }}
+      whileTap={{ y: 1, x: 1 }}
+      className={`px-6 py-3 bg-[#FFDE4D] text-[#1C1917] font-black uppercase tracking-wider rounded-2xl border-sticker shadow-sticker transition-shadow duration-150 hover:shadow-sticker-lg cursor-pointer inline-flex items-center justify-center gap-2 ${className}`}
+      {...props}
+    >
+      {children}
+    </motion.button>
+  );
+};
+
+export const ButtonSecondary: React.FC<ButtonProps> = ({ children, className = '', ...props }) => {
+  return (
+    <motion.button
+      whileHover={{ y: -3, x: -3 }}
+      whileTap={{ y: 1, x: 1 }}
+      className={`px-6 py-3 bg-white text-[#1C1917] font-black uppercase tracking-wider rounded-2xl border-sticker shadow-sticker transition-shadow duration-150 hover:shadow-sticker-lg cursor-pointer inline-flex items-center justify-center gap-2 ${className}`}
+      {...props}
+    >
+      {children}
+    </motion.button>
+  );
+};
+
+interface ButtonWhatsAppProps extends HTMLMotionProps<'a'> {
+  children: React.ReactNode;
+}
+
+export const ButtonWhatsApp: React.FC<ButtonWhatsAppProps> = ({ children, className = '', ...props }) => {
+  return (
+    <motion.a
+      animate={{ scale: [1, 1.03, 1] }}
+      transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+      whileHover={{ y: -3, x: -3 }}
+      whileTap={{ y: 1, x: 1 }}
+      className={`px-5 py-2.5 bg-[#25D366] text-white font-bold tracking-wide rounded-full shadow-[0_4px_14px_rgba(37,211,102,0.35)] hover:shadow-[0_6px_20px_rgba(37,211,102,0.45)] cursor-pointer inline-flex items-center justify-center gap-2 transition-shadow duration-200 ${className}`}
+      {...props}
+    >
+      <MessageCircle size={16} className="fill-current" />
+      {children}
+    </motion.a>
+  );
+};
+
+// ==========================================
+// 3. QUANTITY SELECTOR
+// ==========================================
+interface QuantitySelectorProps {
+  value: number;
+  onChange: (val: number) => void;
+  className?: string;
+}
+
+export const QuantitySelector: React.FC<QuantitySelectorProps> = ({ value, onChange, className = '' }) => {
+  return (
+    <div className={`flex items-center gap-2 bg-stone-50 border border-stone-200 rounded-xl px-2 py-1 select-none ${className}`}>
+      <button
+        type="button"
+        onClick={() => onChange(Math.max(1, value - 1))}
+        className="w-6 h-6 flex items-center justify-center bg-white border border-stone-200 rounded-lg hover:bg-stone-100 active:scale-95 cursor-pointer text-[#1C1917] shadow-sm"
+      >
+        <Minus size={12} strokeWidth={3} />
+      </button>
+      <span className="font-fredoka font-bold text-sm w-4 text-center text-[#1C1917]">{value}</span>
+      <button
+        type="button"
+        onClick={() => onChange(value + 1)}
+        className="w-6 h-6 flex items-center justify-center bg-white border border-stone-200 rounded-lg hover:bg-stone-100 active:scale-95 cursor-pointer text-[#1C1917] shadow-sm"
+      >
+        <Plus size={12} strokeWidth={3} />
+      </button>
+    </div>
+  );
+};
+
+// ==========================================
+// 4. INPUTS
+// ==========================================
+interface SearchInputProps {
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  placeholder?: string;
+  className?: string;
+}
+
+export const SearchInput: React.FC<SearchInputProps> = ({ value, onChange, placeholder = 'Buscar...', className = '' }) => {
+  return (
+    <div className={`relative ${className}`}>
+      <input
+        type="text"
+        value={value}
+        onChange={onChange}
+        placeholder={placeholder}
+        className="w-full pl-10 pr-4 py-3 bg-white font-outfit font-medium text-sm text-[#1C1917] placeholder-[#1C1917]/40 border border-stone-200 rounded-2xl shadow-[0_2px_12px_rgba(0,0,0,0.04)] focus:outline-none focus:ring-0 focus:border-stone-300 focus:shadow-[0_4px_16px_rgba(0,0,0,0.08)] transition-all"
+      />
+      <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#1C1917]/50" size={16} strokeWidth={3} />
+    </div>
+  );
+};
+
+interface ContactInputProps {
+  label: string;
+  placeholder?: string;
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  textarea?: boolean;
+  required?: boolean;
+  className?: string;
+}
+
+export const ContactInput: React.FC<ContactInputProps> = ({
+  label,
+  placeholder,
+  value,
+  onChange,
+  textarea = false,
+  required = false,
+  className = ''
+}) => {
+  return (
+    <div className={`flex flex-col gap-2 ${className}`}>
+      <label className="font-fredoka text-sm font-black text-[#1C1917] flex items-center gap-1.5">
+        {label}
+        {required && <span className="text-[#FF4C4C]">*</span>}
+      </label>
+      {textarea ? (
+        <textarea
+          value={value}
+          onChange={onChange}
+          placeholder={placeholder}
+          required={required}
+          rows={4}
+          className="w-full px-4 py-3 bg-white font-outfit font-bold text-sm text-[#1C1917] placeholder-[#1C1917]/40 border-sticker rounded-2xl shadow-sticker focus:outline-none focus:ring-0 focus:shadow-sticker-lg transition-all resize-none"
+        />
+      ) : (
+        <input
+          type="text"
+          value={value}
+          onChange={onChange}
+          placeholder={placeholder}
+          required={required}
+          className="w-full px-4 py-3 bg-white font-outfit font-bold text-sm text-[#1C1917] placeholder-[#1C1917]/40 border-sticker rounded-2xl shadow-sticker focus:outline-none focus:ring-0 focus:shadow-sticker-lg transition-all"
+        />
+      )}
+    </div>
+  );
+};
+
+// ==========================================
+// 5. PRODUCT CARD
+// ==========================================
+interface ProductCardProps {
+  id: number;
+  name: string;
+  price: number;
+  category: string;
+  image: string;
+  tag?: 'nuevo' | 'popular' | 'importado' | 'oferta';
+  onOrder: () => void;
+}
+
+export const ProductCard: React.FC<ProductCardProps> = ({
+  name,
+  price,
+  category,
+  image,
+  tag,
+  onOrder
+}) => {
+  const [qty, setQty] = React.useState(1);
+
+  return (
+    <motion.div
+      whileHover={{ y: -5 }}
+      className="bg-white border border-stone-100 rounded-[28px] p-5 shadow-[0_4px_24px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.08)] transition-all flex flex-col justify-between h-full relative select-none"
+    >
+      {/* Sticker Badge */}
+      {tag && (
+        <div className="absolute top-2 left-2 z-10">
+          <Badge type={tag} />
+        </div>
+      )}
+
+      {/* Image frame */}
+      <div className="bg-[#FDFBF7] border border-stone-100 rounded-[20px] p-4 h-48 flex items-center justify-center relative overflow-hidden mb-5 select-none">
+        <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(#e5e7eb_2px,transparent_2px)] [background-size:12px_12px]"></div>
+        <img
+          src={image}
+          alt={name}
+          className="max-h-full max-w-full object-contain filter drop-shadow-[0_8px_16px_rgba(0,0,0,0.06)] transform group-hover:scale-105 transition-transform duration-300 animate-float-cute"
+        />
+      </div>
+
+      {/* Content */}
+      <div className="flex flex-col flex-grow justify-between gap-4">
+        <div>
+          <span className="text-[10px] font-black uppercase tracking-widest text-[#FF4C4C] flex items-center gap-1 mb-1">
+            <Tag size={10} className="fill-current" /> {category}
+          </span>
+          <h3 className="font-fredoka text-lg font-bold text-[#1C1917] leading-tight hover:text-[#FF4C4C] transition-colors line-clamp-2">
+            {name}
+          </h3>
+        </div>
+
+        <div className="flex flex-col gap-3 pt-2">
+          {/* Price & Quantity */}
+          <div className="flex items-center justify-between">
+            <span className="text-xl font-fredoka font-bold text-[#FF4C4C]">
+              S/ {price.toFixed(2)}
+            </span>
+            <QuantitySelector value={qty} onChange={setQty} />
+          </div>
+
+          {/* Action Button */}
+          <button
+            onClick={() => {
+              onOrder();
+              const text = `¡Hola! Me gustaría pedir ${qty} unidad(es) de "${name}" (S/ ${(price * qty).toFixed(2)}) de Kinoko Market.`;
+              const url = `https://wa.me/51934421442?text=${encodeURIComponent(text)}`;
+              window.open(url, '_blank');
+            }}
+            className="w-full py-2.5 bg-[#FFDE4D] text-[#1C1917] text-xs font-bold uppercase tracking-widest rounded-xl shadow-[0_4px_12px_rgba(255,222,77,0.4)] hover:shadow-[0_6px_16px_rgba(255,222,77,0.5)] active:translate-y-[1px] active:shadow-sm transition-all cursor-pointer text-center"
+          >
+            Pedir por WhatsApp
+          </button>
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
+// ==========================================
+// 6. CATEGORY CARD
+// ==========================================
+interface CategoryCardProps {
+  title: string;
+  description: string;
+  image: string;
+  color: string;
+  buttonText?: string;
+  onClick?: () => void;
+}
+
+export const CategoryCard: React.FC<CategoryCardProps> = ({
+  title,
+  description,
+  image,
+  color,
+  buttonText = "Ver más",
+  onClick
+}) => {
+  return (
+    <motion.div
+      onClick={onClick}
+      whileHover={{ y: -5 }}
+      whileTap={{ scale: 0.98 }}
+      className="border-sticker rounded-3xl p-6 shadow-sticker hover:shadow-sticker-lg transition-all flex flex-col justify-between h-full w-full cursor-pointer select-none"
+      style={{ backgroundColor: color }}
+    >
+      <div className="flex items-start gap-4 sm:gap-6">
+        <div className="w-16 h-16 bg-white border-sticker rounded-2xl flex items-center justify-center p-2 flex-shrink-0 shadow-sticker-sm">
+          <img src={image} alt={title} className="max-w-full max-h-full object-contain animate-float-cute" />
+        </div>
+        <div className="flex-grow">
+          <h3 className="font-fredoka text-xl font-black text-[#1C1917] mb-1">{title}</h3>
+          <p className="text-sm font-medium text-[#1C1917]/70 leading-snug">{description}</p>
+        </div>
+      </div>
+      <div className="mt-6 flex justify-end">
+        <div className="inline-flex items-center gap-2 px-4 py-2 border-sticker-sm rounded-xl bg-white text-[#1C1917] font-fredoka font-black text-xs uppercase tracking-wider shadow-sticker-sm hover:shadow-sticker active:translate-x-[1px] active:translate-y-[1px] transition-all">
+          <span>{buttonText}</span>
+          <ArrowRight size={14} className="stroke-[3px]" />
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+</file>
+
+<file path="src/components/Header.tsx">
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Menu, X } from 'lucide-react';
+import { ButtonWhatsApp, MushroomLogo } from './DesignSystem';
+
+export const Header: React.FC = () => {
+  const [isMobileOpen, setIsMobileOpen] = useState(false);
+
+  const navLinks = [
+    { name: 'Inicio', href: '#inicio' },
+    { name: 'Propuesta', href: '#pilares' },
+    { name: 'Promos', href: '#promociones' },
+    { name: 'Catálogo', href: '#catalogo' },
+    { name: 'Ramen Builder', href: '#ramen-builder' },
+    { name: 'Contacto', href: '#contacto' },
+  ];
+
+  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    setIsMobileOpen(false);
+    const targetElement = document.querySelector(href);
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
+  return (
+    <>
+      <header className="sticky top-0 z-40 w-full bg-[#FF4C4C]/95 backdrop-blur-sm border-b-3 border-black/30 py-3.5 px-6 select-none shadow-[0_12px_12px_rgba(0,0,0,0.04)]">
+        <div className="max-w-7xl mx-auto flex items-center justify-between">
+          {/* Logo with sticker style */}
+          <a href="#inicio" className="flex items-center gap-2 group">
+            <motion.div
+              whileHover={{ scale: 1.08 }}
+              transition={{ type: 'spring', stiffness: 400, damping: 15 }}
+              className="w-10 h-10 rounded-xl flex items-center justify-center relative overflow-hidden shadow-[0_2px_8px_rgba(228,205,58,0.35)] border border-stone-200"
+            >
+              <div 
+                className="absolute inset-0 z-0 opacity-80"
+                style={{ 
+                  backgroundImage: "url('/waves_bg.jpeg')", 
+                  backgroundSize: "cover", 
+                  backgroundPosition: "center" 
+                }}
+              />
+              <img src="/Mascota.png" alt="Kinoko Logo" className="w-[85%] h-[85%] object-contain relative z-10" />
+            </motion.div>
+            <span className="font-fredoka text-xl font-bold tracking-tight text-[#1C1917] group-hover:text-[#FFDE4D] transition-colors duration-200">
+              Kinoko
+            </span>
+          </a>
+
+          {/* Desktop Nav Links */}
+          <nav className="hidden lg:flex items-center gap-7 font-outfit text-sm font-medium tracking-wide text-[#1C1917]/70">
+            {navLinks.map((link) => (
+              <a
+                key={link.name}
+                href={link.href}
+                onClick={(e) => handleLinkClick(e, link.href)}
+                className="relative hover:text-[#1C1917] transition-colors duration-200 py-1 group"
+              >
+                {link.name}
+                <span className="absolute -bottom-0.5 left-0 w-0 h-[1.5px] bg-[#FFDE4D] rounded-full transition-all duration-300 ease-out group-hover:w-full"></span>
+              </a>
+            ))}
+          </nav>
+
+          {/* Action Button */}
+          <div className="hidden md:block">
+            <ButtonWhatsApp href="https://wa.me/51934421442" target="_blank" rel="noreferrer" className="text-sm px-4 py-2">
+              WhatsApp
+            </ButtonWhatsApp>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setIsMobileOpen(!isMobileOpen)}
+            className="lg:hidden p-2 border border-stone-200 rounded-xl bg-white shadow-sm text-[#1C1917] hover:bg-stone-50 transition-colors cursor-pointer"
+          >
+            {isMobileOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
+        </div>
+      </header>
+
+      {/* Mobile Drawer Navigation */}
+      <AnimatePresence>
+        {isMobileOpen && (
+          <>
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 0.5 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsMobileOpen(false)}
+              className="fixed inset-0 z-40 bg-black"
+            />
+            {/* Drawer */}
+            <motion.div
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+              className="fixed right-0 top-0 bottom-0 z-50 w-72 bg-white border-l border-black/8 p-8 flex flex-col justify-between shadow-[-8px_0_32px_rgba(0,0,0,0.08)]"
+            >
+              <div className="flex flex-col gap-8">
+                <div className="flex items-center justify-between">
+                  <span className="font-fredoka text-lg font-bold text-[#1C1917]">Menú</span>
+                  <button
+                    onClick={() => setIsMobileOpen(false)}
+                    className="p-2 border border-stone-200 rounded-xl bg-stone-50 shadow-sm text-[#1C1917] cursor-pointer hover:bg-stone-100 transition-colors"
+                  >
+                    <X size={18} />
+                  </button>
+                </div>
+
+                <nav className="flex flex-col gap-1 font-outfit text-sm font-medium tracking-wide text-[#1C1917]/70">
+                  {navLinks.map((link) => (
+                    <a
+                      key={link.name}
+                      href={link.href}
+                      onClick={(e) => handleLinkClick(e, link.href)}
+                      className="hover:text-[#1C1917] hover:bg-stone-50 transition-all duration-150 py-3 px-3 rounded-xl border-b border-stone-100 last:border-0"
+                    >
+                      {link.name}
+                    </a>
+                  ))}
+                </nav>
+              </div>
+
+              <div>
+                <ButtonWhatsApp
+                  href="https://wa.me/51934421442"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="w-full text-center"
+                >
+                  WhatsApp
+                </ButtonWhatsApp>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+    </>
+  );
+};
+</file>
+
+<file path="src/components/Hero.tsx">
+import React from 'react';
+import { motion } from 'framer-motion';
+import { Sparkles, ArrowRight } from 'lucide-react';
+import { ButtonPrimary, ButtonSecondary } from './DesignSystem';
+
+export const Hero: React.FC = () => {
+  const scrollToSection = (id: string) => {
+    const target = document.querySelector(id);
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
+  return (
+    <section id="inicio" className="relative py-12 md:py-24 overflow-hidden select-none bg-[#FDFBF7]">
+      {/* Background waves */}
+      <div 
+        className="absolute inset-0 opacity-70 pointer-events-none"
+        style={{ 
+          backgroundImage: "url('/waves_bg.jpeg')", 
+          backgroundSize: "cover", 
+          backgroundPosition: "center" 
+        }}
+      ></div>
+
+      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+        
+        {/* Left Column (Text Content) */}
+        <motion.div
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6 }}
+          className="lg:col-span-7 space-y-6 text-center lg:text-left"
+        >
+          {/* Tagline */}
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#FFDE4D] text-[#1C1917] border-sticker-sm rounded-full text-xs font-black uppercase tracking-wider shadow-sticker-sm rotate-[-1deg]">
+            <Sparkles size={14} className="animate-spin text-[#FF4C4C]" style={{ animationDuration: '4s' }} />
+            ¡El auténtico sabor de Asia en Ica!
+          </div>
+
+          {/* Heading */}
+          <h1 className="font-fredoka text-4xl sm:text-5xl lg:text-6xl font-black text-[#1C1917] leading-[1.1] tracking-tight">
+            Tu rincón asiático <br />
+            favorito en <span className="bg-[#FFDE4D] border-sticker-sm rounded-2xl px-3 inline-block shadow-sticker rotate-[1deg] text-[#1C1917]">Ica</span>
+          </h1>
+
+          {/* Subtitle */}
+          <p className="font-outfit text-base sm:text-lg lg:text-xl font-bold text-[#1C1917] bg-white/10 backdrop-blur-sm border border-white/0 shadow-[0_4px_24px_rgba(255,255,255,0.25)] p-4 sm:p-5 rounded-2xl max-w-xl mx-auto lg:mx-0 leading-relaxed">
+            Snacks japoneses importados, ramen personalizado para armar como un profesional, y bebidas asiáticas originales como Bubble Tea natural. ¡Visítanos frente a la UTP!
+          </p>
+
+          {/* CTAs */}
+          <div className="pt-4 flex flex-col sm:flex-row justify-center lg:justify-start gap-4">
+            <ButtonPrimary onClick={() => scrollToSection('#catalogo')} className="text-sm">
+              Ver Catálogo
+              <ArrowRight size={16} />
+            </ButtonPrimary>
+            <ButtonSecondary onClick={() => scrollToSection('#ramen-builder')} className="text-sm">
+              Arma tu ramen
+            </ButtonSecondary>
+          </div>
+        </motion.div>
+
+        {/* Right Column (Interactive Mascot Showcase) */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.7, type: 'spring', bounce: 0.3 }}
+          className="lg:col-span-5 flex justify-center relative min-h-[360px] sm:min-h-[420px]"
+        >
+          {/* Main Decorative Sticker Background Circle */}
+          <div className="absolute w-64 h-64 sm:w-80 sm:h-80 bg-[#FFDE4D] border-3 border-[#1C1917] rounded-full shadow-sticker -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rotate-[-5deg]"></div>
+          
+          {/* Mascot sticker */}
+          <div className="relative z-10 w-64 sm:w-80 h-auto flex items-center justify-center p-2">
+            <motion.img
+              src="/Mascota.png"
+              alt="Mascota Oficial Kinoko"
+              className="w-full object-contain filter drop-shadow-[8px_8px_0px_#1C1917]"
+              animate={{ y: [0, -10, 0] }}
+              transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
+            />
+          </div>
+
+          {/* Floating Sticker 1: Bubble Tea */}
+          <motion.div
+            className="absolute top-4 left-6 z-20 w-16 h-16 bg-white border-sticker rounded-2xl shadow-sticker-sm p-1.5 rotate-[-12deg]"
+            animate={{ y: [0, -8, 0], rotate: [-12, -8, -12] }}
+            transition={{ repeat: Infinity, duration: 3.5, ease: "easeInOut", delay: 0.2 }}
+          >
+            <img src="/bubble_tea_sticker.png" alt="Bubble Tea" className="w-full h-full object-contain" />
+          </motion.div>
+
+          {/* Floating Sticker 2: Ramen Bowl */}
+          <motion.div
+            className="absolute bottom-4 right-2 z-20 w-20 h-20 bg-[#FF4C4C] border-sticker rounded-3xl shadow-sticker p-2 rotate-[15deg]"
+            animate={{ y: [0, -12, 0], rotate: [15, 20, 15] }}
+            transition={{ repeat: Infinity, duration: 4.5, ease: "easeInOut", delay: 0.5 }}
+          >
+            <img src="/ramen_bowl_sticker.png" alt="Ramen" className="w-full h-full object-contain" />
+          </motion.div>
+
+          {/* Floating Sticker 3: Mochis */}
+          <motion.div
+            className="absolute top-10 right-4 z-20 w-14 h-14 bg-white border-sticker rounded-2xl shadow-sticker-sm p-1 rotate-[8deg]"
+            animate={{ y: [0, -6, 0], rotate: [8, 4, 8] }}
+            transition={{ repeat: Infinity, duration: 3.8, ease: "easeInOut", delay: 0.8 }}
+          >
+            <img src="/mochis_sticker.png" alt="Mochi" className="w-full h-full object-contain" />
+          </motion.div>
+
+          {/* Floating Sticker 4: Pocky Box */}
+          <motion.div
+            className="absolute bottom-6 left-2 z-20 w-16 h-16 bg-white border-sticker rounded-2xl shadow-sticker-sm p-1.5 rotate-[-8deg]"
+            animate={{ y: [0, -10, 0], rotate: [-8, -12, -8] }}
+            transition={{ repeat: Infinity, duration: 4.2, ease: "easeInOut", delay: 1.1 }}
+          >
+            <img src="/pocky_box_sticker.png" alt="Pocky" className="w-full h-full object-contain" />
+          </motion.div>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+</file>
+
+<file path="src/components/NosotrosContacto.tsx">
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Mail, Phone, MapPin, Clock, Send, CheckCircle, MessageCircle, Sparkles } from 'lucide-react';
+import { ContactInput, MushroomLogo } from './DesignSystem';
+import confetti from 'canvas-confetti';
+
+export const NosotrosContacto: React.FC = () => {
+  const [formData, setFormData] = useState({ name: '', contact: '', message: '' });
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!formData.name || !formData.contact || !formData.message) {
+      alert('Por favor, completa todos los campos del formulario.');
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    // Simulate API delay
+    setTimeout(() => {
+      setIsSubmitting(false);
+      setIsSubmitted(true);
+      
+      // Celebrate submission
+      confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.8 },
+        colors: ['#FFDE4D', '#FF4C4C', '#25D366']
+      });
+
+      // Clear form
+      setFormData({ name: '', contact: '', message: '' });
+    }, 1200);
+  };
+
+  return (
+    <>
+      <section id="contacto" className="pt-20 pb-12 bg-[#FDFBF7] select-none">
+        <div className="max-w-7xl mx-auto px-6">
+        
+        {/* ==========================================
+            NOSOTROS: Historia y Galería Polaroid
+            ========================================== */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-28">
+          <div className="lg:col-span-6 space-y-6">
+            <span className="text-[#FF4C4C] font-black uppercase tracking-widest text-xs flex items-center gap-1.5">
+              <Sparkles size={12} className="fill-current" /> CONOCE NUESTRA HISTORIA
+            </span>
+            <h2 className="font-fredoka text-3xl sm:text-4xl font-black text-[#1C1917]">
+              Sobre Kinoko Asian Market
+            </h2>
+            <div className="h-2 w-24 bg-[#FFDE4D] border-sticker-sm rounded-full shadow-sticker-sm"></div>
+            
+            <p className="font-outfit text-base font-bold text-[#1C1917]/70 leading-relaxed">
+              Kinoko nació con la misión de traer la vibrante cultura pop asiática a la ciudad de Ica. Somos un espacio interactivo pensado para los amantes de los snacks importados, el Bubble Tea artesanal y el ramen.
+            </p>
+            <p className="font-outfit text-base font-bold text-[#1C1917]/70 leading-relaxed">
+              No somos solo un market; somos una experiencia. En nuestro local puedes seleccionar tu ramen en bolsa favorito, añadirle ingredientes frescos en nuestra barra de toppings y cocinarlo tú mismo en nuestras estaciones de agua caliente guiadas. ¡La verdadera cultura de conveniencia asiática ya está aquí!
+            </p>
+          </div>
+
+          {/* Polaroid mock photo gallery */}
+          <div className="lg:col-span-6 grid grid-cols-2 gap-6 relative">
+            {/* Polaroid 1 */}
+            <motion.div
+              whileHover={{ rotate: 0, scale: 1.05, zIndex: 10 }}
+              className="bg-white border-sticker p-3 pb-8 rounded-lg shadow-sticker rotate-[-4deg] transition-all"
+            >
+              <div className="h-44 bg-[#FFDE4D]/10 border-sticker-sm rounded-md overflow-hidden flex items-center justify-center p-2 select-none">
+                <img src="/mascota_cooking.png" alt="Ramen station" className="max-h-full object-contain filter drop-shadow-md" />
+              </div>
+              <p className="font-fredoka text-center text-xs font-black text-[#1C1917] mt-3">Estación Ramen</p>
+            </motion.div>
+
+            {/* Polaroid 2 */}
+            <motion.div
+              whileHover={{ rotate: 0, scale: 1.05, zIndex: 10 }}
+              className="bg-white border-sticker p-3 pb-8 rounded-lg shadow-sticker rotate-[6deg] transition-all mt-4"
+            >
+              <div className="h-44 bg-[#FFDE4D]/10 border-sticker-sm rounded-md overflow-hidden flex items-center justify-center p-2 select-none">
+                <img src="/bubble_tea_sticker.png" alt="Bubble tea station" className="max-h-full object-contain filter drop-shadow-md" />
+              </div>
+              <p className="font-fredoka text-center text-xs font-black text-[#1C1917] mt-3">Boba Natural</p>
+            </motion.div>
+
+            {/* Polaroid 3 (Mascota Celebrating) */}
+            <motion.div
+              whileHover={{ rotate: 0, scale: 1.05, zIndex: 10 }}
+              className="absolute w-48 bg-white border-sticker p-3 pb-6 rounded-lg shadow-sticker rotate-[-8deg] bottom-[-40px] left-1/4 z-20 transition-all hidden sm:block"
+            >
+              <div className="h-32 bg-[#FFDE4D]/20 border-sticker-sm rounded-md overflow-hidden flex items-center justify-center p-2 select-none">
+                <img src="/mascota_celebrating.png" alt="Comunidad" className="max-h-full object-contain filter drop-shadow-md" />
+              </div>
+              <p className="font-fredoka text-center text-[10px] font-black text-[#1C1917] mt-2">Kinoko Comunidad</p>
+            </motion.div>
+          </div>
+        </div>
+
+        {/* ==========================================
+            CONTACTO: Mapa, Info y Formulario
+            ========================================== */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch pt-12 border-t-3 border-dashed border-[#1C1917]/20">
+          
+          {/* Info Column (Map & Location info) */}
+          <div className="lg:col-span-5 flex flex-col justify-between space-y-6">
+            <div className="space-y-4">
+              <h3 className="font-fredoka text-2xl font-black text-[#1C1917]">Visítanos en Ica</h3>
+              <div className="space-y-3 font-outfit font-bold text-sm text-[#1C1917]/80">
+                <p className="flex items-center gap-3">
+                  <span className="p-2 bg-[#FFDE4D] border-sticker-sm rounded-xl text-[#1C1917] flex-shrink-0">
+                    <MapPin size={16} />
+                  </span>
+                  <span>Av. Los Tulipanes (Frente a la UTP), Ica, Perú</span>
+                </p>
+                <p className="flex items-center gap-3">
+                  <span className="p-2 bg-[#FF4C4C] border-sticker-sm rounded-xl text-white flex-shrink-0">
+                    <Clock size={16} />
+                  </span>
+                  <span>Lun - Sáb: 11:00 AM - 10:00 PM | Dom: 2:00 PM - 9:00 PM</span>
+                </p>
+                <p className="flex items-center gap-3">
+                  <span className="p-2 bg-indigo-400 border-sticker-sm rounded-xl text-white flex-shrink-0">
+                    <Phone size={16} />
+                  </span>
+                  <span>+51 934 421 442</span>
+                </p>
+              </div>
+            </div>
+
+            {/* Embedded Google Maps with Sticker Frame */}
+            <div className="border-sticker rounded-3xl overflow-hidden shadow-sticker h-64 bg-stone-100 relative">
+              <iframe
+                title="Mapa de Ubicación de Kinoko"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.480036662453!2d-75.7268874!3d-14.0782352!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTTCsDA0JzQxLjYiUyA3NcKwNDMnMzYuOCJX!5e0!3m2!1ses-419!2spe!4v1700000000000!5m2!1ses-419!2spe"
+                className="w-full h-full border-0 grayscale hover:grayscale-0 transition-all"
+                allowFullScreen
+                loading="lazy"
+              ></iframe>
+            </div>
+          </div>
+
+          {/* Form Column */}
+          <div className="lg:col-span-7 bg-white border-sticker rounded-3xl p-6 sm:p-8 shadow-sticker flex flex-col justify-between">
+            <h3 className="font-fredoka text-2xl font-black text-[#1C1917] mb-6">Mándanos un Mensajito</h3>
+
+            <AnimatePresence mode="wait">
+              {!isSubmitted ? (
+                <motion.form
+                  key="contact-form"
+                  onSubmit={handleSubmit}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  className="space-y-5"
+                >
+                  <ContactInput
+                    label="¿Cómo te llamas?"
+                    placeholder="Escribe tu nombre aquí"
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    required
+                  />
+                  <ContactInput
+                    label="Teléfono o Correo de contacto"
+                    placeholder="Ej: +51 999 999 999 o boba@kinoko.com"
+                    value={formData.contact}
+                    onChange={(e) => setFormData({ ...formData, contact: e.target.value })}
+                    required
+                  />
+                  <ContactInput
+                    label="¿Cuál es tu mensaje?"
+                    textarea
+                    placeholder="Cuéntanos tus dudas, sugerencias o felicitaciones..."
+                    value={formData.message}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                    required
+                  />
+
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className={`w-full py-3.5 bg-[#FFDE4D] text-[#1C1917] font-black uppercase tracking-wider rounded-2xl border-sticker shadow-sticker hover:shadow-sticker-lg active:translate-x-[3px] active:translate-y-[3px] active:shadow-sticker-sm transition-all cursor-pointer flex items-center justify-center gap-2 ${
+                      isSubmitting ? 'opacity-75 cursor-wait' : ''
+                    }`}
+                  >
+                    <Send size={16} />
+                    {isSubmitting ? 'Enviando...' : 'Enviar Mensaje'}
+                  </button>
+                </motion.form>
+              ) : (
+                // Success message
+                <motion.div
+                  key="success-card"
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  className="bg-[#25D366]/10 border-2 border-[#25D366] rounded-2xl p-6 text-center space-y-4 my-auto"
+                >
+                  <CheckCircle size={48} className="text-[#25D366] mx-auto animate-bounce" />
+                  <h4 className="font-fredoka text-xl font-black text-[#1c1917]">¡Mensajito Recibido!</h4>
+                  <p className="font-outfit text-sm font-semibold text-stone-600">
+                    Muchas gracias por escribirnos. La mascota Kinoko-Chan ya llevó tu mensaje a nuestro equipo. Te responderemos volando.
+                  </p>
+                  <button
+                    onClick={() => setIsSubmitted(false)}
+                    className="px-4 py-2 bg-white border-sticker-sm rounded-xl font-fredoka font-black text-xs uppercase tracking-wider text-[#1c1917] hover:bg-stone-50 cursor-pointer"
+                  >
+                    Enviar otro mensaje
+                  </button>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+
+        </div>
+
+        </div>
+      </section>
+
+      {/* FOOTER */}
+      <footer className="mt-20 bg-[#FFDE4D] border-t-3 border-[#1C1917] pt-16 pb-8 rounded-t-[2.5rem] md:rounded-t-[3.5rem] select-none text-[#1C1917]">
+        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-12 pb-12 border-b border-[#1C1917]/10">
+          
+          <div className="space-y-4">
+            <h3 className="font-fredoka text-2xl font-black tracking-tight flex items-center gap-2">
+              <div className="w-8 h-8 bg-white border-sticker-sm rounded-lg flex items-center justify-center p-1.5">
+                <MushroomLogo className="w-full h-full" />
+              </div>
+              Kinoko
+            </h3>
+            <p className="font-outfit text-sm font-bold opacity-80 leading-relaxed max-w-xs">
+              Tu rincón asiático favorito en Ica. Vive la experiencia de la cultura pop oriental con los mejores snacks, Boba Tea natural y ramen personalizado.
+            </p>
+          </div>
+
+          <div className="space-y-4 font-outfit">
+            <h4 className="font-fredoka text-xs font-black tracking-widest uppercase opacity-60">Ubicación Fija</h4>
+            <p className="text-sm font-bold flex items-center gap-2">
+              Av. Los Tulipanes (Frente a la UTP), Ica, Perú
+            </p>
+            <div className="text-[10px] font-black uppercase text-stone-600">
+              A un paso del campus universitario
+            </div>
+          </div>
+
+          <div className="space-y-4">
+            <h4 className="font-fredoka text-xs font-black tracking-widest uppercase opacity-60">Comunidad</h4>
+            <div className="flex gap-4">
+              <motion.a
+                whileHover={{ rotate: 10, scale: 1.1 }}
+                href="https://wa.me/51934421442"
+                target="_blank"
+                rel="noreferrer"
+                className="w-10 h-10 bg-white border-sticker-sm text-[#1C1917] rounded-xl flex items-center justify-center shadow-sticker-sm cursor-pointer"
+              >
+                <Phone size={18} />
+              </motion.a>
+              <motion.a
+                whileHover={{ rotate: -10, scale: 1.1 }}
+                href="mailto:hola@kinoko.com"
+                className="w-10 h-10 bg-white border-sticker-sm text-[#1C1917] rounded-xl flex items-center justify-center shadow-sticker-sm cursor-pointer"
+              >
+                <Mail size={18} />
+              </motion.a>
+            </div>
+          </div>
+
+        </div>
+
+        <div className="max-w-7xl mx-auto px-6 pt-6 flex flex-col sm:flex-row justify-between items-center text-xs font-black uppercase tracking-wider text-stone-600 gap-4">
+          <span>&copy; 2026 Kinoko Asian Market. Todos los derechos reservados.</span>
+          <span className="bg-white border-sticker-sm px-2 py-1 rounded-md shadow-sticker-sm">Diseño Sticker Style Kawaii</span>
+        </div>
+      </footer>
+
+      {/* FIXED FLOATING WHATSAPP CTA WIDGET */}
+      <motion.a
+        initial={{ scale: 0, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ delay: 1, type: 'spring', stiffness: 200 }}
+        whileHover={{ scale: 1.1, rotate: 5 }}
+        whileTap={{ scale: 0.9 }}
+        href="https://wa.me/51934421442"
+        target="_blank"
+        rel="noreferrer"
+        className="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white border-sticker p-4 rounded-2xl shadow-sticker hover:shadow-sticker-lg cursor-pointer flex items-center justify-center"
+      >
+        <MessageCircle size={28} className="fill-current text-white" />
+      </motion.a>
+
+    </>
+  );
+};
+</file>
+
+<file path="src/components/Pilares.tsx">
+import React from 'react';
+import { motion, useAnimation } from 'framer-motion';
+
+/* ─────────────────────────────────────────────
+   DECORATIVE ELEMENTS
+───────────────────────────────────────────── */
+
+const StarKawaii = ({ size = 16, color = '#FFDE4D', style }: { size?: number; color?: string; style?: React.CSSProperties }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill={color} style={style}>
+    <path d="M12 2 L13.8 8.4 L20.4 8.4 L15 12.6 L16.8 19 L12 15.2 L7.2 19 L9 12.6 L3.6 8.4 L10.2 8.4 Z" />
+  </svg>
+);
+
+const WaveLine = () => (
+  <svg viewBox="0 0 200 20" className="w-full opacity-20" preserveAspectRatio="none">
+    <path
+      d="M0 10 C20 0, 40 20, 60 10 S100 0, 120 10 S160 20, 180 10 S200 0, 200 10"
+      fill="none"
+      stroke="#1C1917"
+      strokeWidth="2"
+    />
+  </svg>
+);
+
+const FloatingDot = ({ color, className }: { color: string; className?: string }) => (
+  <motion.div
+    className={`absolute rounded-full ${className}`}
+    style={{ backgroundColor: color }}
+    animate={{ y: [0, -10, 0], rotate: [0, 10, -10, 0] }}
+    transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut' }}
+  />
+);
+
+const StickerBadge = ({ text, color, rotate }: { text: string; color: string; rotate: number }) => (
+  <motion.div
+    className="absolute px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider text-white shadow-md select-none pointer-events-none z-10"
+    style={{ backgroundColor: color, rotate }}
+    animate={{ y: [0, -6, 0], rotate: [rotate, rotate + 3, rotate - 3, rotate] }}
+    transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+  >
+    {text}
+  </motion.div>
+);
+
+/* ─────────────────────────────────────────────
+   CARD: ARMA TU RAMEN  (Hero / Centro)
+───────────────────────────────────────────── */
+
+const RamenHeroCard = ({ onClick }: { onClick: () => void }) => {
+  return (
+    <motion.div
+      className="relative cursor-pointer"
+      whileHover={{ scale: 1.03, rotate: -0.5, y: -6 }}
+      transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+      onClick={onClick}
+    >
+
+
+      {/* Card body */}
+      <div
+        className="relative rounded-[28px] overflow-hidden shadow-[10px_8px_rgba(230,205,58,0.35)]" 
+        style={{ background: 'linear-gradient(145deg, #FFDE4D 0%, #E4CD3A 100%)' }}
+      >
+        {/* Badge NEW */}
+        <div className="absolute top-5 right-5 z-20">
+          <motion.div
+            className="bg-[#FF4C4C] text-white text-[10px] font-black px-3 py-1 rounded-full shadow-md uppercase tracking-widest"
+            animate={{ scale: [1, 1.08, 1] }}
+            transition={{ duration: 1.8, repeat: Infinity }}
+          >
+            ⭐ Estrella
+          </motion.div>
+        </div>
+
+        {/* Stiker badge flotante */}
+        <StickerBadge text="Hot 🔥" color="#FF4C4C" rotate={-10} />
+
+        {/* Imagen */}
+        <motion.img
+          src="/ramen_bowl_sticker.png"
+          alt="Ramen Bowl"
+          className="w-52 h-52 sm:w-64 sm:h-64 object-contain mx-auto mt-8 drop-shadow-lg select-none relative z-10"
+          style={{ filter: 'drop-shadow(0 8px 0 rgba(28,25,23,0.15))' }}
+          animate={{ y: [0, -8, 0] }}
+          transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
+        />
+
+        {/* Ondas decorativas */}
+        <div className="px-6 pb-0 -mt-2">
+          <WaveLine />
+        </div>
+
+        {/* Texto */}
+        <div className="px-7 pb-8 pt-3 text-center">
+          <h3 className="font-fredoka text-4xl sm:text-5xl font-black text-[#1C1917] leading-tight">
+            Arma tu<br />Ramen 🍜
+          </h3>
+          <p className="text-[#1C1917]/70 text-sm font-semibold mt-2 leading-snug">
+            Escoge fideos · toppings · caldo<br />y sé el chef de tu tazón.
+          </p>
+
+          {/* CTA */}
+          <motion.button
+            className="mt-5 bg-[#1C1917] text-[#FFDE4D] font-black text-sm px-7 py-3 rounded-full shadow-lg uppercase tracking-wider"
+            whileHover={{ scale: 1.07, boxShadow: '0 8px 24px rgba(28,25,23,0.3)' }}
+            whileTap={{ scale: 0.96 }}
+          >
+            Armar mi Ramen →
+          </motion.button>
+        </div>
+
+        {/* Detalles decorativos internos */}
+        <div className="absolute bottom-4 left-4 opacity-30">
+          <StarKawaii size={20} color="#FF4C4C" />
+        </div>
+        <div className="absolute top-10 left-5 opacity-20">
+          <StarKawaii size={14} color="#1C1917" />
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
+/* ─────────────────────────────────────────────
+   CARD SECUNDARIA COMPACTA
+───────────────────────────────────────────── */
+
+interface SecondaryCardProps {
+  title: string;
+  emoji: string;
+  description: string;
+  image: string;
+  bgColor: string;
+  accentColor: string;
+  buttonText: string;
+  rotateDeg?: number;
+  onClick: () => void;
+}
+
+const SecondaryCard = ({
+  title, emoji, description, image, bgColor, accentColor, buttonText, rotateDeg = 1, onClick,
+}: SecondaryCardProps) => {
+  return (
+    <motion.div
+      className="relative cursor-pointer"
+      whileHover={{ scale: 1.05, rotate: -rotateDeg, y: -6 }}
+      transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+      onClick={onClick}
+    >
+
+
+      {/* Card */}
+      <div
+        className="relative rounded-[24px] overflow-hidden px-6 py-7 flex flex-col items-center text-center shadow-[8px_8px_rgba(0,0,0,0.10)]"
+        style={{ backgroundColor: bgColor }}
+      >
+        {/* Imagen sticker */}
+        <motion.img
+          src={image}
+          alt={title}
+          className="w-28 h-28 object-contain drop-shadow-md select-none"
+          animate={{ y: [0, -6, 0], rotate: [0, 4, -4, 0] }}
+          transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut', delay: Math.random() * 1 }}
+        />
+
+        <h3 className="font-fredoka text-2xl font-black text-[#1C1917] mt-3 leading-tight">
+          {emoji} {title}
+        </h3>
+        <p className="text-[#1C1917]/65 text-xs font-semibold mt-1.5 leading-snug max-w-[180px]">
+          {description}
+        </p>
+
+        <motion.button
+          className="mt-4 text-xs font-black px-5 py-2 rounded-full uppercase tracking-wider shadow-md"
+          style={{ backgroundColor: accentColor, color: '#1C1917' }}
+          whileHover={{ scale: 1.08, boxShadow: '0 6px 18px rgba(0,0,0,0.15)' }}
+          whileTap={{ scale: 0.95 }}
+        >
+          {buttonText}
+        </motion.button>
+
+        {/* Estrella decorativa */}
+        <div className="absolute top-3 right-3 opacity-30">
+          <StarKawaii size={16} color={accentColor} />
+        </div>
+        <div className="absolute bottom-3 left-3 opacity-30">
+          <StarKawaii size={12} color={accentColor} />
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
+/* ─────────────────────────────────────────────
+   PILARES SECTION
+───────────────────────────────────────────── */
+
+export const Pilares: React.FC = () => {
+  const handleCardClick = (id: string, filter?: string) => {
+    const target = document.querySelector(id);
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    if (filter) {
+      const filterBtn = document.querySelector(`button[data-filter="${filter}"]`) as HTMLButtonElement;
+      if (filterBtn) {
+        filterBtn.click();
+      }
+    }
+  };
+
+  const containerVariants = {
+    hidden: {},
+    visible: {
+      transition: { staggerChildren: 0.18 }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 40, scale: 0.95 },
+    visible: {
+      opacity: 1, y: 0, scale: 1,
+      transition: { type: 'spring' as const, bounce: 0.35, duration: 0.7 }
+    }
+  };
+
+  return (
+    <section id="pilares" className="relative py-24 bg-white overflow-hidden select-none">
+
+      {/* ── Fondo decorativo ── */}
+      {/* Círculos grandes de fondo */}
+      <div className="absolute -top-20 -left-20 w-72 h-72 rounded-full bg-[#FFDE4D] opacity-10 pointer-events-none" />
+      <div className="absolute -bottom-24 -right-20 w-96 h-96 rounded-full bg-[#FF4C4C] opacity-8 pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-[#F48CA8] opacity-5 pointer-events-none" />
+
+      {/* Floating stickers decorativos */}
+      <FloatingDot color="#FFDE4D" className="w-6 h-6 top-16 left-[8%]" />
+      <FloatingDot color="#FF4C4C" className="w-4 h-4 top-28 right-[12%]" />
+      <FloatingDot color="#F48CA8" className="w-5 h-5 bottom-20 left-[15%]" />
+      <FloatingDot color="#E4CD3A" className="w-3 h-3 bottom-14 right-[8%]" />
+
+      <motion.div
+        className="absolute top-12 right-[20%] opacity-30 pointer-events-none"
+        animate={{ y: [0, -12, 0], rotate: [0, 15, -15, 0] }}
+        transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut' }}
+      >
+        <StarKawaii size={28} color="#FFDE4D" />
+      </motion.div>
+
+      <motion.div
+        className="absolute bottom-16 left-[22%] opacity-25 pointer-events-none"
+        animate={{ y: [0, -8, 0], rotate: [0, -12, 12, 0] }}
+        transition={{ duration: 3.8, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
+      >
+        <StarKawaii size={22} color="#FF4C4C" />
+      </motion.div>
+
+      <motion.div
+        className="absolute top-1/2 left-[5%] opacity-20 pointer-events-none"
+        animate={{ y: [0, -10, 0] }}
+        transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
+      >
+        <span className="text-4xl">🌸</span>
+      </motion.div>
+
+      <motion.div
+        className="absolute top-1/3 right-[6%] opacity-20 pointer-events-none"
+        animate={{ y: [0, -10, 0], rotate: [0, 10, -10, 0] }}
+        transition={{ duration: 4.2, repeat: Infinity, ease: 'easeInOut', delay: 1.5 }}
+      >
+        <span className="text-3xl">✨</span>
+      </motion.div>
+
+      {/* ── Contenido ── */}
+      <div className="relative z-10 max-w-6xl mx-auto px-6">
+
+        {/* Header */}
+        <motion.div
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
+        >
+          {/* Eyebrow pill */}
+          <div className="inline-flex items-center gap-2 bg-[#FFDE4D] rounded-full px-5 py-2 mb-5 shadow-md">
+            <span className="text-base">🍱</span>
+            <span className="font-black text-[#1C1917] uppercase tracking-widest text-xs">
+              ¿Qué vas a encontrar?
+            </span>
+          </div>
+
+          <h2 className="font-fredoka text-4xl sm:text-5xl font-black text-[#1C1917] leading-tight">
+            La Esencia de{' '}
+            <span className="relative inline-block">
+              Kinoko
+              {/* Underline amarillo */}
+              <motion.div
+                className="absolute -bottom-1 left-0 right-0 h-[5px] bg-[#FF4C4C] rounded-full"
+                initial={{ scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.4 }}
+              />
+            </span>
+            {' '}✨
+          </h2>
+          <p className="text-[#1C1917]/50 font-semibold text-sm mt-3 max-w-md mx-auto">
+            Tres experiencias, un solo lugar. Tu tienda asiática favorita en Lima.
+          </p>
+        </motion.div>
+
+        {/* ── Layout asimétrico ── */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-80px' }}
+          className="flex flex-col lg:flex-row items-stretch gap-6"
+        >
+
+          {/* Columna izquierda: Asian Market */}
+          <motion.div variants={itemVariants} className="flex-1 lg:flex-[1.1] flex flex-col justify-center">
+            <SecondaryCard
+              title="Asian Market"
+              emoji="🛒"
+              description="Snacks, papas exóticas y dulces importados directo de Asia."
+              image="/pocky_box_sticker.png"
+              bgColor="#FDFBF7"
+              accentColor="#FFDE4D"
+              buttonText="Ir al Market →"
+              rotateDeg={1.5}
+              onClick={() => handleCardClick('#catalogo', 'snacks')}
+            />
+          </motion.div>
+
+          {/* Centro: Arma tu Ramen (héroe) */}
+          <motion.div variants={itemVariants} className="flex-1 lg:flex-[1.6]">
+            <RamenHeroCard onClick={() => handleCardClick('#ramen-builder')} />
+          </motion.div>
+
+          {/* Columna derecha: Bebidas & Boba */}
+          <motion.div variants={itemVariants} className="flex-1 lg:flex-[1.1] flex flex-col justify-center">
+            <SecondaryCard
+              title="Bebidas & Boba"
+              emoji="🧋"
+              description="Bubble tea con fruta, té natural y sodas Ramune importadas."
+              image="/bubble_tea_sticker.png"
+              bgColor="#FDF0F4"
+              accentColor="#F48CA8"
+              buttonText="Ver Bebidas →"
+              rotateDeg={-1.5}
+              onClick={() => handleCardClick('#catalogo', 'bebidas')}
+            />
+          </motion.div>
+
+        </motion.div>
+
+        {/* Tagline inferior */}
+        <motion.div
+          className="text-center mt-12 flex items-center justify-center gap-3"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.5 }}
+        >
+          <div className="h-px flex-1 max-w-[80px] bg-[#1C1917]/15 rounded-full" />
+          <span className="text-[#1C1917]/40 text-xs font-bold uppercase tracking-widest">
+            Frente a la UTP · Lima, Perú
+          </span>
+          <div className="h-px flex-1 max-w-[80px] bg-[#1C1917]/15 rounded-full" />
+        </motion.div>
+
+      </div>
+    </section>
+  );
+};
+</file>
+
+<file path="src/components/Promociones.tsx">
+import React from 'react';
+import { motion } from 'framer-motion';
+import { Check, MessageCircle, Gift } from 'lucide-react';
+import confetti from 'canvas-confetti';
+
+interface Promo {
+  id: string;
+  name: string;
+  price: number;
+  originalPrice: number;
+  badge: string;
+  color: string;
+  textColor: string;
+  items: string[];
+  image: string;
+  whatsappMessage: string;
+}
+
+export const Promociones: React.FC = () => {
+  const promos: Promo[] = [
+    {
+      id: 'combo-anime',
+      name: 'Combo Anime',
+      price: 24.90,
+      originalPrice: 29.50,
+      badge: 'EL FAVORITO',
+      color: '#FFDE4D', // Yellow
+      textColor: '#1C1917',
+      items: [
+        '1 Ramen instantáneo premium coreano/japonés',
+        '1 Bebida refrescante oriental de lata',
+        '1 Caja de galletas Pocky clásicas (Fresa/Matcha)'
+      ],
+      image: '/pocky_box_sticker.png',
+      whatsappMessage: '¡Hola! Me interesa pedir el "Combo Anime" (Ramen + Bebida + Pocky) por S/ 24.90.'
+    },
+    {
+      id: 'combo-kawaii',
+      name: 'Combo Kawaii',
+      price: 19.90,
+      originalPrice: 25.00,
+      badge: 'SUPER CUTE',
+      color: '#F48FB1', // Pink
+      textColor: '#1C1917',
+      items: [
+        '1 Bubble Tea grande de Taro o Matcha natural',
+        '1 Delicioso Mochi tradicional de fruta',
+        '1 Bolsa de snacks crujientes asiáticos'
+      ],
+      image: '/bubble_tea_sticker.png',
+      whatsappMessage: '¡Hola! Me interesa pedir el "Combo Kawaii" (Bubble Tea + Mochi + Snack) por S/ 19.90.'
+    },
+    {
+      id: 'ramen-lovers',
+      name: 'Ramen Lovers',
+      price: 39.90,
+      originalPrice: 48.00,
+      badge: 'PARA DOS',
+      color: '#FF4C4C', // Red
+      textColor: '#FFFFFF',
+      items: [
+        '2 Tazones de Ramen personalizados (armados en mesa)',
+        '2 Bebidas tradicionales de lata chinas o japonesas',
+        '¡Diversión y experiencia de cocina compartida!'
+      ],
+      image: '/ramen_bowl_sticker.png',
+      whatsappMessage: '¡Hola! Me interesa pedir la promoción "Ramen Lovers" para dos personas por S/ 39.90.'
+    }
+  ];
+
+  const handleOrder = (msg: string) => {
+    // Confetti effect!
+    confetti({
+      particleCount: 80,
+      spread: 60,
+      origin: { y: 0.7 },
+      colors: ['#FFDE4D', '#FF4C4C', '#25D366', '#ffffff']
+    });
+
+    const url = `https://wa.me/51934421442?text=${encodeURIComponent(msg)}`;
+    window.open(url, '_blank');
+  };
+
+  return (
+    <section id="promociones" className="py-20 bg-[#FDFBF7] border-b-3 border-[#1C1917] select-none">
+      <div className="max-w-7xl mx-auto px-6">
+        
+        {/* Section Header */}
+        <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">
+          <span className="text-[#FF4C4C] font-black uppercase tracking-widest text-xs flex items-center justify-center gap-1.5">
+            <Gift size={14} /> Promociones Exclusivas
+          </span>
+          <h2 className="font-fredoka text-3xl sm:text-4xl font-black text-[#1C1917]">
+            Combos del Mes
+          </h2>
+          <div className="h-2 w-24 bg-[#FFDE4D] border-sticker-sm rounded-full mx-auto shadow-sticker-sm"></div>
+        </div>
+
+        {/* Promos Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {promos.map((promo) => (
+            <motion.div
+              key={promo.id}
+              whileHover={{ y: -6, rotate: promo.id === 'combo-kawaii' ? -1 : 1 }}
+              className="border-sticker rounded-3xl p-6 shadow-sticker hover:shadow-sticker-lg transition-all relative flex flex-col justify-between"
+              style={{ backgroundColor: promo.color, color: promo.textColor }}
+            >
+              {/* Badge sticker style */}
+              <span className="absolute -top-3 right-4 bg-white text-[#1C1917] font-black text-[10px] uppercase tracking-widest px-3 py-1.5 border-sticker-sm rounded-full shadow-sticker-sm rotate-[3deg]">
+                {promo.badge}
+              </span>
+
+              {/* Title & Image */}
+              <div>
+                <div className="flex justify-between items-start gap-4 mb-6">
+                  <div>
+                    <h3 className="font-fredoka text-2xl font-black mb-1">{promo.name}</h3>
+                    <div className="flex items-center gap-2">
+                      <span className="text-2xl font-fredoka font-black">
+                        S/ {promo.price.toFixed(2)}
+                      </span>
+                      <span className="text-sm line-through opacity-60">
+                        S/ {promo.originalPrice.toFixed(2)}
+                      </span>
+                    </div>
+                  </div>
+                  <div className="w-16 h-16 bg-white border-sticker-sm rounded-2xl p-1.5 flex-shrink-0 flex items-center justify-center">
+                    <img src={promo.image} alt={promo.name} className="w-full h-full object-contain animate-float-cute" />
+                  </div>
+                </div>
+
+                {/* Items list */}
+                <ul className="space-y-3 font-outfit text-sm font-semibold opacity-90 border-t border-[#1C1917]/20 pt-4 mb-6">
+                  {promo.items.map((item, idx) => (
+                    <li key={idx} className="flex items-start gap-2">
+                      <span className="bg-white text-[#1C1917] border-sticker-sm rounded-full p-0.5 flex-shrink-0 mt-0.5">
+                        <Check size={10} className="stroke-[4px]" />
+                      </span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* WhatsApp Button */}
+              <button
+                onClick={() => handleOrder(promo.whatsappMessage)}
+                className="w-full py-3 bg-white text-[#1C1917] font-black uppercase tracking-wider rounded-2xl border-sticker shadow-sticker-sm hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all cursor-pointer flex items-center justify-center gap-2"
+              >
+                <MessageCircle size={18} className="fill-emerald-500 text-emerald-500" />
+                Pedir Combo por WhatsApp
+              </button>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+</file>
+
+<file path="src/components/RamenBuilder.tsx">
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ArrowLeft, ArrowRight, Check, MessageCircle, RefreshCw, Sparkles, Soup } from 'lucide-react';
+import confetti from 'canvas-confetti';
+import { MushroomLogo } from './DesignSystem';
+
+interface Option {
+  id: string;
+  name: string;
+  price: number;
+  weight: number;
+  emoji: string; // Used internally for metadata
+  detail?: string;
+  color?: string; // used for soup color or ingredient specific representations
+}
+
+const BASES: Option[] = [
+  { id: 'trigo', name: 'Fideos de Trigo (Ramen Clásico)', price: 6.00, weight: 150, emoji: 'trigo', detail: 'Fideos elásticos tradicionales.' },
+  { id: 'arroz', name: 'Fideos de Arroz (Sin Gluten)', price: 7.00, weight: 140, emoji: 'arroz', detail: 'Textura ligera, apto para celíacos.' },
+  { id: 'udon', name: 'Fideos Udon Gruesos', price: 8.00, weight: 180, emoji: 'udon', detail: 'Fideos gruesos y muy suaves.' },
+];
+
+const PROTEINAS: Option[] = [
+  { id: 'chashu', name: 'Cerdo Chashu (Braseado)', price: 6.50, weight: 60, emoji: 'chashu', detail: 'Tocino de cerdo marinado y tierno.' },
+  { id: 'pollo', name: 'Pollo Teriyaki', price: 5.50, weight: 60, emoji: 'pollo', detail: 'Pechuga de pollo glaseada con salsa teriyaki.' },
+  { id: 'tofu', name: 'Tofu Frito (Agedashi)', price: 4.50, weight: 50, emoji: 'tofu', detail: 'Tofu frito, crocante por fuera y suave por dentro.' },
+  { id: 'tempura', name: 'Langostino Tempura', price: 8.00, weight: 50, emoji: 'tempura', detail: 'Langostino rebozado frito al estilo japonés.' },
+];
+
+const TOPPINGS: Option[] = [
+  { id: 'ajitama', name: 'Huevo Ajitama (Marinado)', price: 3.00, weight: 50, emoji: 'ajitama', detail: 'Huevo semicocido con yema cremosa.' },
+  { id: 'naruto', name: 'Pastel Narutomaki', price: 2.50, weight: 20, emoji: 'naruto', detail: 'Famoso pastel de pescado japonés.' },
+  { id: 'cebollin', name: 'Cebollín Fresco', price: 1.50, weight: 10, emoji: 'cebollin', detail: 'Aporta frescura e intensidad.' },
+  { id: 'nori', name: 'Algas Nori Crujientes', price: 2.00, weight: 5, emoji: 'nori', detail: 'Hojas de alga marina tostada.' },
+  { id: 'shiitake', name: 'Hongos Shiitake Cocidos', price: 3.50, weight: 30, emoji: 'shiitake', detail: 'Sabor umami tradicional.' },
+  { id: 'maiz', name: 'Maíz Dulce', price: 2.00, weight: 25, emoji: 'maiz', detail: 'Toque dulce y crocante.' },
+];
+
+const SALSAS: Option[] = [
+  { id: 'shoyu', name: 'Caldo Shoyu (Soja Clásica)', price: 4.00, weight: 250, emoji: 'shoyu', detail: 'Caldo ligero a base de soja y dashi.', color: 'rgba(120, 54, 4, 0.55)' },
+  { id: 'tonkotsu', name: 'Caldo Tonkotsu (Cerdo Cremoso)', price: 5.00, weight: 250, emoji: 'tonkotsu', detail: 'Caldo espeso y reconfortante de cerdo.', color: 'rgba(242, 235, 222, 0.9)' },
+  { id: 'miso', name: 'Caldo Miso (Pasta de Soja)', price: 4.50, weight: 250, emoji: 'miso', detail: 'Caldo fermentado de soja con gran cuerpo.', color: 'rgba(196, 153, 93, 0.7)' },
+  { id: 'buldak', name: 'Caldo Spicy Buldak (Picante)', price: 5.50, weight: 250, emoji: 'buldak', detail: '¡Caldo súper picante extremo coreano!', color: 'rgba(220, 38, 38, 0.85)' },
+];
+
+// ==========================================
+// CUSTOM STYLIZED SVG INGREDIENT ICONS
+// ==========================================
+
+
+
+// Map Option ID to clean Lucide / SVG Icon
+const OptionIcon: React.FC<{ id: string; className?: string }> = ({ id }) => {
+  let emoji = '🥣';
+  switch (id) {
+    // Bases
+    case 'trigo':
+      emoji = '🍜';
+      break;
+    case 'arroz':
+      emoji = '🍚';
+      break;
+    case 'udon':
+      emoji = '🥢';
+      break;
+    // Proteínas
+    case 'chashu':
+      emoji = '🥓';
+      break;
+    case 'pollo':
+      emoji = '🍗';
+      break;
+    case 'tofu':
+      emoji = '🧀';
+      break;
+    case 'tempura':
+      emoji = '🍤';
+      break;
+    // Toppings
+    case 'ajitama':
+      emoji = '🥚';
+      break;
+    case 'naruto':
+      emoji = '🍥';
+      break;
+    case 'cebollin':
+      emoji = '🌱';
+      break;
+    case 'nori':
+      emoji = '🍙';
+      break;
+    case 'shiitake':
+      emoji = '🍄';
+      break;
+    case 'maiz':
+      emoji = '🌽';
+      break;
+    // Salsas
+    case 'shoyu':
+      emoji = '🥣';
+      break;
+    case 'tonkotsu':
+      emoji = '🍲';
+      break;
+    case 'miso':
+      emoji = '🍵';
+      break;
+    case 'buldak':
+      emoji = '🌶️';
+      break;
+  }
+  return (
+    <span className="text-2xl select-none" role="img" aria-label={id}>
+      {emoji}
+    </span>
+  );
+};
+
+// ==========================================
+// STEAM EFFECT COMPONENT
+// ==========================================
+interface SteamEffectProps {
+  active: boolean;
+}
+
+const SteamEffect: React.FC<SteamEffectProps> = ({ active }) => {
+  if (!active) return null;
+  return (
+    <div
+      style={{ bottom: '130px' }}
+      className="absolute left-1/2 -translate-x-1/2 flex gap-8 z-[50] pointer-events-none"
+    >
+      <motion.div
+        animate={{ y: [0, -90], opacity: [0, 0.8, 0], scale: [0.9, 1.4, 0.9] }}
+        transition={{ repeat: Infinity, duration: 2.5, ease: 'easeOut' }}
+      >
+        <svg width="24" height="48" viewBox="0 0 24 48" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-auto h-16">
+          <path
+            d="M12 48 C4 36, 20 24, 12 12 C4 0, 20 0, 12 0"
+            stroke="#57534E"
+            strokeWidth="5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            opacity="0.8"
+          />
+        </svg>
+      </motion.div>
+      <motion.div
+        animate={{ y: [10, -80], opacity: [0, 0.8, 0], scale: [0.8, 1.3, 0.8] }}
+        transition={{ repeat: Infinity, duration: 2.8, ease: 'easeOut', delay: 0.4 }}
+      >
+        <svg width="24" height="48" viewBox="0 0 24 48" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-auto h-16">
+          <path
+            d="M12 48 C4 36, 20 24, 12 12 C4 0, 20 0, 12 0"
+            stroke="#57534E"
+            strokeWidth="5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            opacity="0.8"
+          />
+        </svg>
+      </motion.div>
+      <motion.div
+        animate={{ y: [5, -100], opacity: [0, 0.8, 0], scale: [1.0, 1.5, 1.0] }}
+        transition={{ repeat: Infinity, duration: 2.2, ease: 'easeOut', delay: 0.8 }}
+      >
+        <svg width="24" height="48" viewBox="0 0 24 48" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-auto h-16">
+          <path
+            d="M12 48 C4 36, 20 24, 12 12 C4 0, 20 0, 12 0"
+            stroke="#57534E"
+            strokeWidth="5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            opacity="0.8"
+          />
+        </svg>
+      </motion.div>
+    </div>
+  );
+};
+
+export const RamenBuilder: React.FC = () => {
+  const [step, setStep] = useState(1);
+  const [selectedBase, setSelectedBase] = useState<Option | null>(null);
+  const [selectedProteina, setSelectedProteina] = useState<Option | null>(null);
+  const [selectedToppings, setSelectedToppings] = useState<Option[]>([]);
+  const [selectedSalsa, setSelectedSalsa] = useState<Option | null>(null);
+  const [animationTrigger, setAnimationTrigger] = useState(0);
+
+  // Trigger drop animation on any ingredient change
+  useEffect(() => {
+    setAnimationTrigger(prev => prev + 1);
+  }, [
+    selectedBase?.id,
+    selectedProteina?.id,
+    selectedToppings.map(t => t.id).join(','),
+    selectedSalsa?.id
+  ]);
+
+  // Calculate current price and weight
+  const basePrice = selectedBase?.price || 0;
+  const proteinaPrice = selectedProteina?.price || 0;
+  const toppingsPrice = selectedToppings.reduce((sum, item) => sum + item.price, 0);
+  const salsaPrice = selectedSalsa?.price || 0;
+  const totalPrice = basePrice + proteinaPrice + toppingsPrice + salsaPrice;
+
+  const baseWeight = selectedBase?.weight || 0;
+  const proteinaWeight = selectedProteina?.weight || 0;
+  const toppingsWeight = selectedToppings.reduce((sum, item) => sum + item.weight, 0);
+  const salsaWeight = selectedSalsa?.weight || 0;
+  const totalWeight = baseWeight + proteinaWeight + toppingsWeight + salsaWeight;
+
+  const isComplete = selectedBase && selectedProteina && selectedToppings.length > 0 && selectedSalsa;
+
+  const hasIngredients = !!(selectedBase || selectedProteina || selectedToppings.length > 0 || selectedSalsa);
+
+  const bowlStyle: React.CSSProperties = hasIngredients ? {
+    maskImage: 'radial-gradient(circle at 50% -70%, transparent 50%, black 80%)',
+    WebkitMaskImage: 'radial-gradient(circle at 50% -70%, transparent 50%, black 80%)',
+    opacity: 0.9,
+    transition: 'all 0.5s ease-in-out'
+  } : {
+    opacity: 1,
+    transition: 'all 0.5s ease-in-out'
+  };
+
+  const handleToggleTopping = (topping: Option) => {
+    if (selectedToppings.some(item => item.id === topping.id)) {
+      setSelectedToppings(selectedToppings.filter(item => item.id !== topping.id));
+    } else {
+      if (selectedToppings.length < 3) {
+        setSelectedToppings([...selectedToppings, topping]);
+      }
+    }
+  };
+
+  const handleReset = () => {
+    setSelectedBase(null);
+    setSelectedProteina(null);
+    setSelectedToppings([]);
+    setSelectedSalsa(null);
+    setStep(1);
+  };
+
+  const handleOrderWhatsApp = () => {
+    if (!isComplete) return;
+
+    confetti({
+      particleCount: 150,
+      spread: 80,
+      origin: { y: 0.65 }
+    });
+
+    const toppingsStr = selectedToppings.map(t => `${t.name}`).join(', ');
+    const msg = `¡Hola! Acabo de armar mi tazón de Ramen personalizado en la web de Kinoko:\n\n` +
+      `- Base de Fideos: ${selectedBase.name}\n` +
+      `- Proteína: ${selectedProteina.name}\n` +
+      `- Toppings: ${toppingsStr}\n` +
+      `- Caldo/Salsa: ${selectedSalsa.name}\n\n` +
+      `- Peso estimado: ${totalWeight}g\n` +
+      `- Precio final: S/ ${totalPrice.toFixed(2)}\n\n` +
+      `¡Por favor, confírmenme el pedido!`;
+
+    const url = `https://wa.me/51934421442?text=${encodeURIComponent(msg)}`;
+    window.open(url, '_blank');
+  };
+
+  const nextStep = () => {
+    if (step === 1 && !selectedBase) return;
+    if (step === 2 && !selectedProteina) return;
+    if (step === 3 && selectedToppings.length === 0) return;
+    if (step < 4) setStep(step + 1);
+  };
+
+  const prevStep = () => {
+    if (step > 1) setStep(step - 1);
+  };
+
+  // Determine current choices list based on step
+  const renderStepChoices = () => {
+    switch (step) {
+      case 1:
+        return (
+          <div className="space-y-4">
+            <h3 className="text-lg font-black font-fredoka text-[#1C1917] mb-2">Paso 1: Elige tu Base de Fideos</h3>
+            <div className="grid grid-cols-1 gap-3">
+              {BASES.map((opt) => (
+                <motion.div
+                  key={opt.id}
+                  whileHover={{ y: -2 }}
+                  onClick={() => setSelectedBase(opt)}
+                  className={`p-4 border-sticker-sm rounded-2xl cursor-pointer transition-all flex items-center justify-between ${
+                    selectedBase?.id === opt.id
+                      ? 'bg-[#FFDE4D] shadow-sticker-sm translate-x-[-2px] translate-y-[-2px]'
+                      : 'bg-white hover:bg-stone-50'
+                  }`}
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 bg-[#FDFBF7] border-2 border-[#1C1917] rounded-xl flex items-center justify-center p-1.5 shadow-sticker-sm">
+                      <OptionIcon id={opt.id} className="w-full h-full text-[#1C1917]" />
+                    </div>
+                    <div>
+                      <h4 className="font-fredoka font-black text-sm text-[#1C1917]">{opt.name}</h4>
+                      <p className="text-xs text-[#1C1917]/60">{opt.detail}</p>
+                    </div>
+                  </div>
+                  <div className="text-right flex-shrink-0">
+                    <span className="text-sm font-black text-[#FF4C4C] block">+S/ {opt.price.toFixed(2)}</span>
+                    <span className="text-[10px] font-bold text-stone-400 block">{opt.weight}g</span>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        );
+      case 2:
+        return (
+          <div className="space-y-4">
+            <h3 className="text-lg font-black font-fredoka text-[#1C1917] mb-2">Paso 2: Elige tu Proteína</h3>
+            <div className="grid grid-cols-1 gap-3">
+              {PROTEINAS.map((opt) => (
+                <motion.div
+                  key={opt.id}
+                  whileHover={{ y: -2 }}
+                  onClick={() => setSelectedProteina(opt)}
+                  className={`p-4 border-sticker-sm rounded-2xl cursor-pointer transition-all flex items-center justify-between ${
+                    selectedProteina?.id === opt.id
+                      ? 'bg-[#FFDE4D] shadow-sticker-sm translate-x-[-2px] translate-y-[-2px]'
+                      : 'bg-white hover:bg-stone-50'
+                  }`}
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 bg-[#FDFBF7] border-2 border-[#1C1917] rounded-xl flex items-center justify-center p-1 shadow-sticker-sm">
+                      <OptionIcon id={opt.id} className="w-full h-full" />
+                    </div>
+                    <div>
+                      <h4 className="font-fredoka font-black text-sm text-[#1C1917]">{opt.name}</h4>
+                      <p className="text-xs text-[#1C1917]/60">{opt.detail}</p>
+                    </div>
+                  </div>
+                  <div className="text-right flex-shrink-0">
+                    <span className="text-sm font-black text-[#FF4C4C] block">+S/ {opt.price.toFixed(2)}</span>
+                    <span className="text-[10px] font-bold text-stone-400 block">{opt.weight}g</span>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        );
+      case 3:
+        return (
+          <div className="space-y-4">
+            <div className="flex items-center justify-between mb-2">
+              <h3 className="text-lg font-black font-fredoka text-[#1C1917]">Paso 3: Toppings (Elige hasta 3)</h3>
+              <span className="text-xs font-black bg-stone-900 text-[#FFDE4D] px-3 py-1 rounded-xl shadow-sticker-sm">
+                {selectedToppings.length}/3 elegidos
+              </span>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {TOPPINGS.map((opt) => {
+                const isSelected = selectedToppings.some(item => item.id === opt.id);
+                const isDisabled = !isSelected && selectedToppings.length >= 3;
+                return (
+                  <motion.div
+                    key={opt.id}
+                    whileHover={!isDisabled ? { y: -2 } : {}}
+                    onClick={() => !isDisabled && handleToggleTopping(opt)}
+                    className={`p-4 border-sticker-sm rounded-2xl transition-all flex flex-col justify-between ${
+                      isSelected
+                        ? 'bg-[#FFDE4D] shadow-[0_4px_14px_rgba(228,205,58,0.35)] border-[#E4CD3A]'
+                        : isDisabled
+                          ? 'opacity-40 cursor-not-allowed bg-stone-100 border-stone-200'
+                          : 'bg-white hover:bg-stone-50 cursor-pointer border-stone-200 shadow-sm'
+                    }`}
+                  >
+                    <div className="flex items-center gap-3 mb-2">
+                      <div className="w-12 h-12 bg-[#FDFBF7] border border-stone-200 rounded-xl flex items-center justify-center p-1 shadow-sm">
+                        <OptionIcon id={opt.id} className="w-full h-full" />
+                      </div>
+                      <div>
+                        <h4 className="font-fredoka font-black text-sm text-[#1C1917]">{opt.name}</h4>
+                        <p className="text-[10px] text-[#1C1917]/60 leading-tight">{opt.detail}</p>
+                      </div>
+                    </div>
+                    <div className="flex items-center justify-between mt-1 border-t border-[#1C1917]/10 pt-2">
+                      <span className="text-xs font-black text-[#FF4C4C]">+S/ {opt.price.toFixed(2)}</span>
+                      <span className="text-[10px] font-bold text-stone-400">{opt.weight}g</span>
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </div>
+          </div>
+        );
+      case 4:
+        return (
+          <div className="space-y-6">
+            <div className="space-y-4">
+              <h3 className="text-lg font-black font-fredoka text-[#1C1917] mb-2">Paso 4: Elige tu Caldo / Salsa</h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {SALSAS.map((opt) => (
+                  <motion.div
+                    key={opt.id}
+                    whileHover={{ y: -2 }}
+                    onClick={() => setSelectedSalsa(opt)}
+                    className={`p-4 border border-stone-200 rounded-2xl cursor-pointer transition-all flex items-center justify-between ${
+                      selectedSalsa?.id === opt.id
+                        ? 'bg-[#FFDE4D] shadow-[0_4px_14px_rgba(228,205,58,0.35)] border-[#E4CD3A]'
+                        : 'bg-white hover:bg-stone-50 shadow-sm'
+                    }`}
+                  >
+                    <div className="flex items-center gap-3">
+                      <div className="w-12 h-12 bg-[#FDFBF7] border border-stone-200 rounded-xl flex items-center justify-center p-1.5 shadow-sm">
+                        <OptionIcon id={opt.id} className="w-full h-full text-[#1C1917]" />
+                      </div>
+                      <div>
+                        <h4 className="font-fredoka font-black text-sm text-[#1C1917]">{opt.name}</h4>
+                        <p className="text-[10px] text-[#1C1917]/60 leading-tight">{opt.detail}</p>
+                      </div>
+                    </div>
+                    <div className="text-right flex-shrink-0 ml-2">
+                      <span className="text-xs font-black text-[#FF4C4C] block">+S/ {opt.price.toFixed(2)}</span>
+                      <span className="text-[9px] font-bold text-stone-400 block">{opt.weight}g</span>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+
+            {/* ESTADO FINAL: Receipt Ticket shown in the selector panel when complete */}
+            {isComplete && (
+              <motion.div
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="bg-yellow-50/50 border border-stone-200 p-5 rounded-2xl relative border-t-4 border-t-[#FF4C4C] shadow-[0_4px_20px_rgba(0,0,0,0.06)] font-mono text-xs text-[#1C1917] space-y-3 mt-4"
+              >
+                <div className="absolute top-2 right-2 rotate-[6deg]">
+                  <Sparkles size={16} className="text-[#FFDE4D] fill-[#FFDE4D]" />
+                </div>
+                
+                <div className="text-center space-y-1">
+                  <div className="font-fredoka font-black uppercase text-sm tracking-wider flex items-center justify-center gap-1">
+                    <MushroomLogo className="w-5 h-5" />
+                    Kinoko Ramen House
+                  </div>
+                  <div className="text-[9px] opacity-60 uppercase">Av. Los Tulipanes - Frente a la UTP</div>
+                </div>
+
+                <div className="border-b border-dashed border-[#1C1917]/25 pb-2 pt-1 space-y-1">
+                  <div className="flex justify-between font-bold">
+                    <span>DETALLE</span>
+                    <span>PRECIO</span>
+                  </div>
+                </div>
+
+                <div className="space-y-1.5 opacity-90 text-[11px]">
+                  <div className="flex justify-between">
+                    <span>1x Fideos ({selectedBase.name.split(' (')[0]})</span>
+                    <span>S/ {selectedBase.price.toFixed(2)}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>1x Proteína ({selectedProteina.name.split(' (')[0]})</span>
+                    <span>S/ {selectedProteina.price.toFixed(2)}</span>
+                  </div>
+                  {selectedToppings.map(t => (
+                    <div key={t.id} className="flex justify-between pl-2">
+                      <span>+ {t.name.split(' (')[0]}</span>
+                      <span>S/ {t.price.toFixed(2)}</span>
+                    </div>
+                  ))}
+                  <div className="flex justify-between">
+                    <span>1x Caldo ({selectedSalsa.name.split(' (')[0]})</span>
+                    <span>S/ {selectedSalsa.price.toFixed(2)}</span>
+                  </div>
+                </div>
+
+                <div className="border-t border-dashed border-[#1C1917]/25 pt-2 flex justify-between font-fredoka font-black text-sm text-[#FF4C4C]">
+                  <span>TOTAL ESTIMADO:</span>
+                  <span>S/ {totalPrice.toFixed(2)}</span>
+                </div>
+
+                {/* Simulated barcode */}
+                <div className="pt-2 flex justify-center items-center gap-0.5 opacity-40 select-none">
+                  <div className="w-1.5 h-7 bg-black"></div>
+                  <div className="w-0.5 h-7 bg-black"></div>
+                  <div className="w-2.5 h-7 bg-black"></div>
+                  <div className="w-1 h-7 bg-black"></div>
+                  <div className="w-0.5 h-7 bg-black"></div>
+                  <div className="w-2 h-7 bg-black"></div>
+                  <div className="w-0.5 h-7 bg-black"></div>
+                  <div className="w-1.5 h-7 bg-black"></div>
+                </div>
+              </motion.div>
+            )}
+          </div>
+        );
+      default:
+        return null;
+    }
+  };
+
+  return (
+    <section id="ramen-builder" className="py-20 bg-[#FDFBF7] select-none">
+      <div className="max-w-7xl mx-auto px-6">
+        
+        {/* Section Header */}
+        <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">
+          <span className="text-[#FF4C4C] font-black uppercase tracking-widest text-xs flex items-center justify-center gap-1.5">
+            <Soup size={14} className="fill-current" /> Experiencia Ramen Builder
+          </span>
+          <h2 className="font-fredoka text-3xl sm:text-4xl font-black text-[#1C1917]">
+            Configurador de Ramen
+          </h2>
+          <div className="h-1 w-16 bg-[#FFDE4D] rounded-full mx-auto"></div>
+        </div>
+
+        {/* Builder Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch ">
+          
+          {/* Left Column: Visual Bowl Simulator */}
+          <div className="lg:col-span-5 flex flex-col justify-between bg-white border border-stone-300 rounded-3xl p-6 shadow-[8px_8px_rgba(0,0,0,0.10)] relative">
+            <h3 className="font-fredoka text-base font-black text-[#1C1917] text-center mb-6 uppercase tracking-wider flex items-center justify-center gap-1.5">
+              <Soup size={16} /> Tu Tazón de Ramen
+            </h3>
+
+            {/* BOWL SIMULATOR AREA */}
+            <div className="relative h-72 sm:h-96 w-full flex items-center justify-center border-2 border-dashed border-[#1C1917]/10 rounded-2xl mb-6 bg-[#FDFBF7] overflow-hidden">
+              <div className="absolute inset-0 opacity-[0.02] bg-[radial-gradient(#1c1917_2px,transparent_2px)] [background-size:12px_12px]"></div>
+
+              {/* ESTADO VACÍO (Empty State inside the bowl) */}
+              {!selectedBase && !selectedProteina && selectedToppings.length === 0 && !selectedSalsa && (
+                <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center z-10 space-y-4">
+                  <motion.div
+                    initial={{ scale: 0.9 }}
+                    animate={{ scale: 1 }}
+                    className="bg-[#FFDE4D] border border-[#E4CD3A] p-4 rounded-2xl shadow-[0_4px_16px_rgba(228,205,58,0.3)] font-fredoka font-bold text-xs text-[#1C1917] relative rotate-[-2deg]"
+                  >
+                    ¡Tu tazón está vacío! <br />
+                    Elige la base de fideos para empezar.
+                    <div className="absolute w-3 h-3 bg-[#FFDE4D] border-r border-b border-[#E4CD3A] bottom-[-7px] left-1/2 -translate-x-1/2 rotate-[45deg]"></div>
+                  </motion.div>
+                  <img src="/mascota_waving.png" alt="Mascota" className="w-28 h-28 object-contain filter drop-shadow-[3px_3px_0px_#1C1917] animate-float-cute" />
+                </div>
+              )}
+
+              {/* ESTADO FINAL: Complete banner overlay */}
+              {isComplete && (
+                <motion.div
+                  initial={{ scale: 0, rotate: -30 }}
+                  animate={{ scale: 1, rotate: -4 }}
+                  className="absolute top-4 left-4 z-[35] bg-[#FFDE4D] border border-[#E4CD3A] px-3 py-1.5 rounded-xl shadow-[0_4px_12px_rgba(228,205,58,0.35)] font-fredoka font-bold text-[10px] tracking-wider uppercase flex items-center gap-1 text-[#1C1917]"
+                >
+                  <Sparkles size={10} className="fill-current" /> SERVIDO
+                </motion.div>
+              )}
+
+              {/* Nori Sheet at the back (z-5) */}
+              <AnimatePresence>
+                {selectedToppings.some(t => t.id === 'nori') && (
+                  <motion.div
+                    key={`nori-${animationTrigger}`}
+                    initial={{ y: -150, opacity: 0, rotate: -15 }}
+                    animate={{ y: 0, opacity: 1, rotate: -8 }}
+                    exit={{ y: -150, opacity: 0 }}
+                    transition={{ type: 'spring', damping: 10 }}
+                    className="absolute bottom-28 left-[18%] z-[5] bg-[#1C1917] border border-stone-700 w-16 h-20 rounded-md shadow-md flex items-center justify-center text-stone-500 font-bold"
+                  >
+                    <div className="w-12 h-16 border border-dashed border-white/20 rounded"></div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
+              {/* Soup Layer (sitting inside the bowl, fills dynamically) */}
+              <AnimatePresence>
+                {selectedSalsa && (
+                  <motion.div
+                    initial={{ opacity: 0, scaleY: 0 }}
+                    animate={{ opacity: 1, scaleY: 1 }}
+                    exit={{ opacity: 0, scaleY: 0 }}
+                    transition={{ duration: 0.5 }}
+                    className="absolute bottom-15.75 left-[8%] right-[8%] h-18 w-[84%] rounded-b-[1.75rem] origin-bottom z-[12]"
+                    style={{ backgroundColor: selectedSalsa.color }}
+                  />
+                )}
+              </AnimatePresence>
+
+              {/* Soup Bubbles (gurgling when soup is active) */}
+              {selectedSalsa && (
+                <div className="absolute bottom-16 left-[20%] right-[20%] h-10 z-[13] overflow-hidden pointer-events-none opacity-40">
+                  <motion.div
+                    animate={{ y: [0, -10, 0] }}
+                    transition={{ repeat: Infinity, duration: 3, ease: 'easeInOut' }}
+                    className="w-2 h-2 rounded-full bg-white absolute left-4 bottom-2"
+                  />
+                  <motion.div
+                    animate={{ y: [0, -8, 0] }}
+                    transition={{ repeat: Infinity, duration: 2.5, ease: 'easeInOut', delay: 0.4 }}
+                    className="w-1.5 h-1.5 rounded-full bg-white absolute right-8 bottom-4"
+                  />
+                  <motion.div
+                    animate={{ y: [0, -12, 0] }}
+                    transition={{ repeat: Infinity, duration: 3.2, ease: 'easeInOut', delay: 0.8 }}
+                    className="w-2.5 h-2.5 rounded-full bg-white absolute left-1/2 bottom-1"
+                  />
+                </div>
+              )}
+
+              {/* Wavy Noodles Layer (Custom SVG path representation) */}
+              <AnimatePresence>
+                {selectedBase && (
+                  <motion.div
+                    key={`noodles-${selectedBase.id}-${animationTrigger}`}
+                    initial={{ y: -200, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    exit={{ y: -200, opacity: 0 }}
+                    transition={{ type: 'spring', damping: 15 }}
+                    className="absolute bottom-16 left-[14%] right-[14%] w-[72%] h-20 z-[15] select-none pointer-events-none"
+                  >
+                    <svg viewBox="0 0 200 80" className="w-full h-full fill-none">
+                      <path d="M 10 30 Q 30 10 50 30 T 90 30 T 130 30 T 170 30" stroke="#FFDE4D" strokeWidth="4.5" strokeLinecap="round" />
+                      <path d="M 15 40 Q 35 20 55 40 T 95 40 T 135 40 T 175 40" stroke="#FFD034" strokeWidth="4.5" strokeLinecap="round" />
+                      <path d="M 20 50 Q 40 30 60 50 T 100 50 T 140 50 T 180 50" stroke="#FFC000" strokeWidth="4.5" strokeLinecap="round" />
+                      <path d="M 8 20 Q 28 0 48 20 T 88 20 T 128 20 T 168 20" stroke="#FFDE4D" strokeWidth="3.5" strokeLinecap="round" opacity="0.8" />
+                      <path d="M 25 35 Q 45 15 65 35 T 105 35 T 145 35 T 185 35" stroke="#FFE885" strokeWidth="3" strokeLinecap="round" />
+                    </svg>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
+              {/* Protein Layer (Sticker framed round badge) */}
+              <AnimatePresence>
+                {selectedProteina && (
+                  <motion.div
+                    key={`protein-${selectedProteina.id}-${animationTrigger}`}
+                    initial={{ y: -220, opacity: 0, rotate: -30 }}
+                    animate={{ y: 0, opacity: 1, rotate: -12 }}
+                    exit={{ y: -220, opacity: 0 }}
+                    transition={{ type: 'spring', damping: 12, stiffness: 100 }}
+                    className="absolute bottom-22 left-[18%] z-[20] w-14 h-14 bg-white border border-stone-200 rounded-full flex items-center justify-center shadow-[0_4px_12px_rgba(0,0,0,0.10)] filter drop-shadow-md select-none"
+                  >
+                    <OptionIcon id={selectedProteina.id} className="w-10 h-10" />
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
+              {/* Toppings Layer (Circular sticker frames, positioned distinctively) */}
+              <AnimatePresence>
+                {selectedToppings.filter(t => t.id !== 'nori').map((top, index) => {
+                  const positions = [
+                    'bottom-24 right-[16%] rotate-[12deg]',
+                    'bottom-28 left-[40%] rotate-[-6deg]',
+                    'bottom-18 right-[36%] rotate-[22deg]',
+                  ];
+                  return (
+                    <motion.div
+                      key={`${top.id}-${animationTrigger}`}
+                      initial={{ y: -250, opacity: 0, scale: 0.5 }}
+                      animate={{ y: 0, opacity: 1, scale: 1 }}
+                      exit={{ y: -250, opacity: 0 }}
+                      transition={{ type: 'spring', damping: 10, delay: index * 0.08 }}
+                      className={`absolute z-[25] w-12 h-12 bg-white border border-stone-200 rounded-full flex items-center justify-center shadow-[0_4px_12px_rgba(0,0,0,0.10)] filter drop-shadow-md select-none ${positions[index]}`}
+                    >
+                      <OptionIcon id={top.id} className="w-8 h-8" />
+                    </motion.div>
+                  );
+                })}
+              </AnimatePresence>
+
+              {/* Ramen Bowl Shape Sticker with Japanese design */}
+              <div
+                style={bowlStyle}
+                className="absolute bottom-6 left-[8%] right-[8%] h-28 border-2 border-stone-200 rounded-b-[4.5rem] bg-white shadow-[0_8px_32px_rgba(0,0,0,0.08)] z-[30] flex flex-col justify-end pb-3 items-center overflow-hidden"
+              >
+                {/* Decorative border checker striping */}
+                <div className="absolute top-0 left-0 right-0 h-4 bg-[#FF4C4C] flex justify-around items-center overflow-hidden">
+                  <div className="w-4 h-full bg-[#FFDE4D] rotate-12"></div>
+                  <div className="w-4 h-full bg-[#FFDE4D] rotate-12"></div>
+                  <div className="w-4 h-full bg-[#FFDE4D] rotate-12"></div>
+                  <div className="w-4 h-full bg-[#FFDE4D] rotate-12"></div>
+                  <div className="w-4 h-full bg-[#FFDE4D] rotate-12"></div>
+                  <div className="w-4 h-full bg-[#FFDE4D] rotate-12"></div>
+                  <div className="w-4 h-full bg-[#FFDE4D] rotate-12"></div>
+                  <div className="w-4 h-full bg-[#FFDE4D] rotate-12"></div>
+                </div>
+
+                <div className="w-full border-t-2 border-dashed border-[#FF4C4C]/50 pt-2 text-center font-fredoka text-[15px] font-black tracking-widest text-[#1C1917]/60 z-[10]">
+                  KINOKO RAMEN HOUSE
+                </div>
+              </div>
+
+              {/* Steam bubbles */}
+              <SteamEffect active={!!selectedSalsa} />
+            </div>
+
+            {/* WEIGHT & PRICE INDICATORS */}
+            <div className="grid grid-cols-2 gap-4 border-t border-dashed border-stone-200 pt-4 font-fredoka">
+              <div className="p-3 bg-stone-100 border border-stone-300 rounded-2xl text-center">
+                <span className="text-[10px] font-bold text-stone-400 block uppercase">Peso Estimado</span>
+                <span className="text-xl font-black text-[#1C1917]">{totalWeight}g</span>
+              </div>
+              <div className="p-3 bg-[#FFDE4D]/10 border border-[#E4CD3A]/30 rounded-2xl text-center">
+                <span className="text-[10px] font-bold text-stone-400 block uppercase">Precio Total</span>
+                <span className="text-xl font-black text-[#FF4C4C]">S/ {totalPrice.toFixed(2)}</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Column: Steps Control */}
+          <div className="lg:col-span-7 flex flex-col justify-between bg-white border border-stone-300 rounded-3xl p-6 shadow-[8px_8px_rgba(0,0,0,0.10)] relative">
+            
+            {/* Step Indicators */}
+            <div className="flex justify-between items-center mb-8 border-b-2 border-[#1C1917]/10 pb-4">
+              {[1, 2, 3, 4].map((s) => (
+                <div key={s} className="flex items-center gap-2">
+                  <div
+                    className={`w-8 h-8 rounded-full border border-stone-200 font-fredoka font-bold flex items-center justify-center text-xs transition-colors shadow-sm ${
+                      step === s
+                        ? 'bg-[#FFDE4D] text-[#1C1917]'
+                        : step > s
+                          ? 'bg-[#25D366] text-white'
+                          : 'bg-stone-100 text-[#1C1917]/40'
+                    }`}
+                  >
+                    {step > s ? <Check size={14} className="stroke-[3px]" /> : s}
+                  </div>
+                  <span
+                    className={`hidden sm:inline font-fredoka text-xs font-black uppercase tracking-wider ${
+                      step === s ? 'text-[#1C1917]' : 'text-[#1C1917]/40'
+                    }`}
+                  >
+                    {s === 1 ? 'Fideos' : s === 2 ? 'Proteína' : s === 3 ? 'Toppings' : 'Caldo'}
+                  </span>
+                </div>
+              ))}
+            </div>
+
+            {/* Step Choices Area */}
+            <div className="flex-grow min-h-[300px] mb-8">
+              {renderStepChoices()}
+            </div>
+
+            {/* Navigation Buttons */}
+            <div className="flex items-center justify-between border-t-2 border-[#1C1917]/10 pt-4">
+              {step > 1 ? (
+                <button
+                  onClick={prevStep}
+                  className="px-4 py-2 border border-stone-200 rounded-xl bg-white hover:bg-stone-50 shadow-sm font-fredoka font-medium text-xs uppercase tracking-wider text-[#1C1917] cursor-pointer flex items-center gap-1.5"
+                >
+                  <ArrowLeft size={14} /> Atrás
+                </button>
+              ) : (
+                <button
+                  onClick={handleReset}
+                  className="px-4 py-2 border border-stone-200 rounded-xl bg-stone-100 hover:bg-stone-200 shadow-sm font-fredoka font-medium text-xs uppercase tracking-wider text-stone-600 cursor-pointer flex items-center gap-1.5"
+                >
+                  <RefreshCw size={14} /> Reiniciar
+                </button>
+              )}
+
+              {step < 4 ? (
+                <button
+                  onClick={nextStep}
+                  disabled={(step === 1 && !selectedBase) || (step === 2 && !selectedProteina) || (step === 3 && selectedToppings.length === 0)}
+                  className={`px-5 py-2.5 border rounded-xl font-fredoka font-bold text-xs uppercase tracking-wider cursor-pointer flex items-center gap-1.5 transition-all ${
+                    ((step === 1 && !selectedBase) || (step === 2 && !selectedProteina) || (step === 3 && selectedToppings.length === 0))
+                      ? 'bg-stone-200 text-stone-400 border-stone-200 shadow-none cursor-not-allowed'
+                      : 'bg-[#FFDE4D] text-[#1C1917] border-[#E4CD3A] shadow-[0_4px_12px_rgba(228,205,58,0.35)] hover:shadow-[0_6px_18px_rgba(228,205,58,0.45)]'
+                  }`}
+                >
+                  Siguiente <ArrowRight size={14} />
+                </button>
+              ) : (
+                <button
+                  onClick={handleOrderWhatsApp}
+                  disabled={!isComplete}
+                  className={`px-6 py-3 border rounded-2xl font-fredoka font-bold text-sm uppercase tracking-wider cursor-pointer flex items-center gap-2 transition-all ${
+                    !isComplete
+                      ? 'bg-stone-200 text-stone-400 border-stone-200 shadow-none cursor-not-allowed'
+                      : 'bg-[#25D366] text-white border-[#1fa855] shadow-[0_4px_16px_rgba(37,211,102,0.35)] hover:shadow-[0_6px_24px_rgba(37,211,102,0.45)]'
+                  }`}
+                >
+                  <MessageCircle size={18} className="fill-current" />
+                  Pedir por WhatsApp
+                </button>
+              )}
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  );
+};
+</file>
+
+<file path="src/index.css">
+@import "tailwindcss";
+
+@theme {
+  --font-fredoka: "Fredoka", sans-serif;
+  --font-outfit: "Outfit", sans-serif;
+  --color-primary: #FFDE4D;
+  --color-secondary: #FF4C4C;
+  --color-dark: #1C1917;
+  --color-cream: #FDFBF7;
+}
+
+/* Custom Utilities for Kawaii Neobrutalism (Sticker Style) */
+@utility font-fredoka {
+  font-family: var(--font-fredoka);
+}
+
+@utility font-outfit {
+  font-family: var(--font-outfit);
+}
+
+@utility border-sticker {
+  border: 3px solid var(--color-dark);
+}
+
+@utility border-sticker-sm {
+  border: 2px solid var(--color-dark);
+}
+
+@utility shadow-sticker {
+  box-shadow: 4px 4px 0px 0px var(--color-dark);
+}
+
+@utility shadow-sticker-lg {
+  box-shadow: 7px 7px 0px 0px var(--color-dark);
+}
+
+@utility shadow-sticker-sm {
+  box-shadow: 2px 2px 0px 0px var(--color-dark);
+}
+
+@utility shadow-sticker-green {
+  box-shadow: 4px 4px 0px 0px #15803d;
+}
+
+@utility active-sticker-press {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px 0px var(--color-dark);
+}
+
+@utility active-sticker-press-lg {
+  transform: translate(4px, 4px);
+  box-shadow: 3px 3px 0px 0px var(--color-dark);
+}
+
+body {
+  font-family: var(--font-outfit);
+  background-color: var(--color-cream);
+  color: var(--color-dark);
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-fredoka);
+}
+
+/* Custom kawaii float animations */
+@keyframes float-kawaii {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(2deg);
+  }
+}
+
+@keyframes float-kawaii-delayed {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(-3deg);
+  }
+}
+
+@utility animate-float-cute {
+  animation: float-kawaii 5s ease-in-out infinite;
+}
+
+@utility animate-float-cute-delay {
+  animation: float-kawaii-delayed 6s ease-in-out infinite;
+}
+</file>
+
+<file path="src/KinokoLanding.tsx">
+import { Header } from './components/Header';
+import { Hero } from './components/Hero';
+import { Pilares } from './components/Pilares';
+import { Promociones } from './components/Promociones';
+import { Catalog } from './components/Catalog';
+import { RamenBuilder } from './components/RamenBuilder';
+import { NosotrosContacto } from './components/NosotrosContacto';
+
+export default function KinokoLanding() {
+  return (
+    <div className="min-h-screen flex flex-col bg-[#FDFBF7] text-[#1C1917] selection:bg-[#FFDE4D] selection:text-[#1C1917]">
+      {/* 1. Header Navigation */}
+      <Header />
+
+      {/* 2. Hero Section */}
+      <Hero />
+
+      {/* 3. Pillars (Nuestra Esencia) */}
+      <Pilares />
+
+      {/* 4. Promociones */}
+      <Promociones />
+
+      {/* 5. Product Catalog */}
+      <Catalog />
+
+      {/* 6. Custom Ramen Builder */}
+      <RamenBuilder />
+
+      {/* 7. About & Contact Form & Footer */}
+      <NosotrosContacto />
+    </div>
+  );
+}
+</file>
+
+<file path="src/main.tsx">
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import './index.css'
+import KinokoLanding from './KinokoLanding.tsx'
+
+createRoot(document.getElementById('root')!).render(
+  <StrictMode>
+    <KinokoLanding />
+  </StrictMode>,
+)
+</file>
+
+<file path="tsconfig.app.json">
+{
+  "compilerOptions": {
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
+    "target": "es2023",
+    "lib": ["ES2023", "DOM"],
+    "module": "esnext",
+    "types": ["vite/client"],
+    "skipLibCheck": true,
+
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
+    "moduleDetection": "force",
+    "noEmit": true,
+    "jsx": "react-jsx",
+
+    /* Linting */
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "erasableSyntaxOnly": true,
+    "noFallthroughCasesInSwitch": true
+  },
+  "include": ["src"]
+}
+</file>
+
+<file path="tsconfig.json">
+{
+  "files": [],
+  "references": [
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.node.json" }
+  ]
+}
+</file>
+
+<file path="tsconfig.node.json">
+{
+  "compilerOptions": {
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
+    "target": "es2023",
+    "lib": ["ES2023"],
+    "module": "esnext",
+    "types": ["node"],
+    "skipLibCheck": true,
+
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
+    "moduleDetection": "force",
+    "noEmit": true,
+
+    /* Linting */
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "erasableSyntaxOnly": true,
+    "noFallthroughCasesInSwitch": true
+  },
+  "include": ["vite.config.ts"]
+}
+</file>
+
+<file path="vite.config.ts">
+import { defineConfig } from 'vite'
+import react, { reactCompilerPreset } from '@vitejs/plugin-react'
+import babel from '@rolldown/plugin-babel'
+import tailwindcss from '@tailwindcss/vite'
+
+// https://vite.dev/config/
+export default defineConfig({
+  plugins: [
+    react(),
+    babel({ presets: [reactCompilerPreset()] }),
+    tailwindcss()
+  ],
+})
+</file>
+
+</files>

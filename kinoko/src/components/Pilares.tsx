@@ -225,7 +225,7 @@ export const Pilares: React.FC = () => {
   };
 
   return (
-    <section id="pilares" className="relative py-24 bg-white overflow-hidden select-none">
+    <section id="pilares" className="relative pt-24 pb-36 md:pb-44 bg-transparent overflow-hidden select-none">
 
       {/* ── Fondo decorativo ── */}
       {/* Círculos grandes de fondo */}

@@ -82,7 +82,7 @@ export const Promociones: React.FC = () => {
   };
 
   return (
-    <section id="promociones" className="py-20 bg-[#FDFBF7] border-b-3 border-[#1C1917] select-none">
+    <section id="promociones" className="pt-20 pb-32 md:pb-40 bg-transparent select-none">
       <div className="max-w-7xl mx-auto px-6">
         
         {/* Section Header */}
@@ -102,11 +102,11 @@ export const Promociones: React.FC = () => {
             <motion.div
               key={promo.id}
               whileHover={{ y: -6, rotate: promo.id === 'combo-kawaii' ? -1 : 1 }}
-              className="border-sticker rounded-3xl p-6 shadow-sticker hover:shadow-sticker-lg transition-all relative flex flex-col justify-between"
+              className="rounded-[28px] p-6 shadow-[8px_8px_rgba(0,0,0,0.10)] hover:shadow-[0_20px_48px_rgba(0,0,0,0.13)] transition-all duration-300 relative flex flex-col justify-between"
               style={{ backgroundColor: promo.color, color: promo.textColor }}
             >
               {/* Badge sticker style */}
-              <span className="absolute -top-3 right-4 bg-white text-[#1C1917] font-black text-[10px] uppercase tracking-widest px-3 py-1.5 border-sticker-sm rounded-full shadow-sticker-sm rotate-[3deg]">
+              <span className="absolute -top-3 right-4 bg-white text-[#1C1917] font-black text-[10px] uppercase tracking-widest px-3 py-1.5 rounded-full shadow-md rotate-[3deg]">
                 {promo.badge}
               </span>
 
@@ -124,7 +124,7 @@ export const Promociones: React.FC = () => {
                       </span>
                     </div>
                   </div>
-                  <div className="w-16 h-16 bg-white border-sticker-sm rounded-2xl p-1.5 flex-shrink-0 flex items-center justify-center">
+                  <div className="w-16 h-16 bg-white rounded-2xl p-1.5 flex-shrink-0 flex items-center justify-center shadow-md">
                     <img src={promo.image} alt={promo.name} className="w-full h-full object-contain animate-float-cute" />
                   </div>
                 </div>
@@ -145,7 +145,7 @@ export const Promociones: React.FC = () => {
               {/* WhatsApp Button */}
               <button
                 onClick={() => handleOrder(promo.whatsappMessage)}
-                className="w-full py-3 bg-white text-[#1C1917] font-black uppercase tracking-wider rounded-2xl border-sticker shadow-sticker-sm hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all cursor-pointer flex items-center justify-center gap-2"
+                className="w-full py-3 bg-white text-[#1C1917] font-black uppercase tracking-wider rounded-full shadow-md hover:shadow-lg active:scale-[0.98] transition-all cursor-pointer flex items-center justify-center gap-2"
               >
                 <MessageCircle size={18} className="fill-emerald-500 text-emerald-500" />
                 Pedir Combo por WhatsApp

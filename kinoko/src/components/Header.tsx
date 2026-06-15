@@ -26,7 +26,7 @@ export const Header: React.FC = () => {
 
   return (
     <>
-      <header className="sticky top-0 z-40 w-full bg-[#FF4C4C]/95 backdrop-blur-sm border-b-3 border-black/30 py-3.5 px-6 select-none shadow-[0_12px_12px_rgba(0,0,0,0.04)]">
+      <header className="sticky top-0 z-40 w-full bg-white/90 backdrop-blur-md border-b border-[#1C1917]/8 py-3.5 px-6 select-none shadow-[0_1px_16px_rgba(0,0,0,0.05)]">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           {/* Logo with sticker style */}
           <a href="#inicio" className="flex items-center gap-2 group">
@@ -45,7 +45,7 @@ export const Header: React.FC = () => {
               />
               <img src="/Mascota.png" alt="Kinoko Logo" className="w-[85%] h-[85%] object-contain relative z-10" />
             </motion.div>
-            <span className="font-fredoka text-xl font-bold tracking-tight text-[#1C1917] group-hover:text-[#FFDE4D] transition-colors duration-200">
+            <span className="font-fredoka text-xl font-bold tracking-tight text-[#1C1917] group-hover:text-[#FF4C4C] transition-colors duration-200">
               Kinoko
             </span>
           </a>
@@ -60,7 +60,7 @@ export const Header: React.FC = () => {
                 className="relative hover:text-[#1C1917] transition-colors duration-200 py-1 group"
               >
                 {link.name}
-                <span className="absolute -bottom-0.5 left-0 w-0 h-[1.5px] bg-[#FFDE4D] rounded-full transition-all duration-300 ease-out group-hover:w-full"></span>
+                <span className="absolute -bottom-0.5 left-0 w-0 h-[2px] bg-[#FF4C4C] rounded-full transition-all duration-300 ease-out group-hover:w-full"></span>
               </a>
             ))}
           </nav>

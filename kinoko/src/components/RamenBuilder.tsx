@@ -130,51 +130,128 @@ const SteamEffect: React.FC<SteamEffectProps> = ({ active }) => {
       style={{ bottom: '130px' }}
       className="absolute left-1/2 -translate-x-1/2 flex gap-8 z-[50] pointer-events-none"
     >
+      {[
+        { delay: 0, duration: 2.5, y: [0, -90], scale: [0.9, 1.4, 0.9] },
+        { delay: 0.4, duration: 2.8, y: [10, -80], scale: [0.8, 1.3, 0.8] },
+        { delay: 0.8, duration: 2.2, y: [5, -100], scale: [1.0, 1.5, 1.0] },
+      ].map((item, idx) => (
+        <motion.div
+          key={idx}
+          animate={{ y: item.y, opacity: [0, 0.8, 0], scale: item.scale }}
+          transition={{ repeat: Infinity, duration: item.duration, ease: 'easeOut', delay: item.delay }}
+        >
+          <svg width="24" height="48" viewBox="0 0 24 48" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-auto h-16">
+            <defs>
+              <linearGradient id={`steamGrad-${idx}`} x1="0" y1="1" x2="0" y2="0">
+                <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.75" />
+                <stop offset="50%" stopColor="#FFFFFF" stopOpacity="0.4" />
+                <stop offset="100%" stopColor="#FFFFFF" stopOpacity="0" />
+              </linearGradient>
+            </defs>
+            <path
+              d="M12 48 C4 36, 20 24, 12 12 C4 0, 20 0, 12 0"
+              stroke={`url(#steamGrad-${idx})`}
+              strokeWidth="4"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </motion.div>
+      ))}
+    </div>
+  );
+};
+
+// ==========================================
+// SOUP GRADIENTS REGISTRATION
+// ==========================================
+const SoupGradDefs: React.FC = () => (
+  <svg className="absolute w-0 h-0" width="0" height="0">
+    <defs>
+      <linearGradient id="soup-shoyu" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stopColor="#8B4513" stopOpacity="0.75" />
+        <stop offset="100%" stopColor="#4A2206" stopOpacity="0.95" />
+      </linearGradient>
+      <linearGradient id="soup-tonkotsu" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stopColor="#F9F6F0" stopOpacity="0.95" />
+        <stop offset="100%" stopColor="#E3D6C5" stopOpacity="0.98" />
+      </linearGradient>
+      <linearGradient id="soup-miso" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stopColor="#CF9F64" stopOpacity="0.85" />
+        <stop offset="100%" stopColor="#8E5E2C" stopOpacity="0.98" />
+      </linearGradient>
+      <linearGradient id="soup-buldak" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stopColor="#EF4444" stopOpacity="0.85" />
+        <stop offset="100%" stopColor="#851313" stopOpacity="0.98" />
+      </linearGradient>
+    </defs>
+  </svg>
+);
+
+// ==========================================
+// BOILING SOUP BUBBLES & OIL DROPS
+// ==========================================
+const SoupBubbles: React.FC = () => {
+  return (
+    <div className="absolute bottom-16 left-[15%] right-[15%] h-12 z-[13] overflow-hidden pointer-events-none">
+      {/* Burbujas que suben y explotan */}
       <motion.div
-        animate={{ y: [0, -90], opacity: [0, 0.8, 0], scale: [0.9, 1.4, 0.9] }}
-        transition={{ repeat: Infinity, duration: 2.5, ease: 'easeOut' }}
-      >
-        <svg width="24" height="48" viewBox="0 0 24 48" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-auto h-16">
-          <path
-            d="M12 48 C4 36, 20 24, 12 12 C4 0, 20 0, 12 0"
-            stroke="#57534E"
-            strokeWidth="5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            opacity="0.8"
-          />
-        </svg>
-      </motion.div>
+        animate={{
+          y: [25, -15],
+          x: [0, 6, -6, 2],
+          scale: [0.4, 1, 1.2, 0],
+          opacity: [0, 0.6, 0.8, 0],
+        }}
+        transition={{ repeat: Infinity, duration: 2.8, ease: 'easeOut', delay: 0.1 }}
+        className="w-2.5 h-2.5 rounded-full bg-white/40 border border-white/20 absolute left-6 bottom-0"
+      />
       <motion.div
-        animate={{ y: [10, -80], opacity: [0, 0.8, 0], scale: [0.8, 1.3, 0.8] }}
-        transition={{ repeat: Infinity, duration: 2.8, ease: 'easeOut', delay: 0.4 }}
-      >
-        <svg width="24" height="48" viewBox="0 0 24 48" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-auto h-16">
-          <path
-            d="M12 48 C4 36, 20 24, 12 12 C4 0, 20 0, 12 0"
-            stroke="#57534E"
-            strokeWidth="5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            opacity="0.8"
-          />
-        </svg>
-      </motion.div>
+        animate={{
+          y: [25, -20],
+          x: [0, -4, 5, -2],
+          scale: [0.3, 0.8, 1.0, 0],
+          opacity: [0, 0.5, 0.7, 0],
+        }}
+        transition={{ repeat: Infinity, duration: 2.3, ease: 'easeOut', delay: 0.7 }}
+        className="w-2 h-2 rounded-full bg-white/30 border border-white/10 absolute right-12 bottom-0"
+      />
       <motion.div
-        animate={{ y: [5, -100], opacity: [0, 0.8, 0], scale: [1.0, 1.5, 1.0] }}
-        transition={{ repeat: Infinity, duration: 2.2, ease: 'easeOut', delay: 0.8 }}
-      >
-        <svg width="24" height="48" viewBox="0 0 24 48" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-auto h-16">
-          <path
-            d="M12 48 C4 36, 20 24, 12 12 C4 0, 20 0, 12 0"
-            stroke="#57534E"
-            strokeWidth="5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            opacity="0.8"
-          />
-        </svg>
-      </motion.div>
+        animate={{
+          y: [25, -18],
+          x: [0, 4, -4, 0],
+          scale: [0.5, 1.0, 1.3, 0],
+          opacity: [0, 0.7, 0.9, 0],
+        }}
+        transition={{ repeat: Infinity, duration: 3.1, ease: 'easeOut', delay: 1.3 }}
+        className="w-3 h-3 rounded-full bg-white/45 border border-white/20 absolute left-1/2 bottom-0"
+      />
+      {/* Gotitas de grasa/aceite de ramen */}
+      <motion.div
+        animate={{
+          scale: [0.9, 1.05, 0.9, 1.05],
+          x: [0, 2, -2, 0],
+          y: [0, 1, -1, 0]
+        }}
+        transition={{ repeat: Infinity, duration: 4.5, ease: 'easeInOut' }}
+        className="w-4.5 h-3 rounded-full bg-[#FFDE4D]/25 absolute left-12 bottom-2"
+      />
+      <motion.div
+        animate={{
+          scale: [0.95, 1.1, 0.95, 1.1],
+          x: [0, -2, 2, 0],
+          y: [0, -1, 1, 0]
+        }}
+        transition={{ repeat: Infinity, duration: 5.2, ease: 'easeInOut', delay: 0.6 }}
+        className="w-3.5 h-2.5 rounded-full bg-[#FFDE4D]/20 absolute right-18 bottom-4"
+      />
+      <motion.div
+        animate={{
+          scale: [0.85, 1.0, 0.85, 1.0],
+          x: [0, 1.5, -1.5, 0]
+        }}
+        transition={{ repeat: Infinity, duration: 3.8, ease: 'easeInOut', delay: 1.2 }}
+        className="w-3 h-2 rounded-full bg-[#FFDE4D]/15 absolute left-1/3 bottom-5"
+      />
     </div>
   );
 };
@@ -185,17 +262,6 @@ export const RamenBuilder: React.FC = () => {
   const [selectedProteina, setSelectedProteina] = useState<Option | null>(null);
   const [selectedToppings, setSelectedToppings] = useState<Option[]>([]);
   const [selectedSalsa, setSelectedSalsa] = useState<Option | null>(null);
-  const [animationTrigger, setAnimationTrigger] = useState(0);
-
-  // Trigger drop animation on any ingredient change
-  useEffect(() => {
-    setAnimationTrigger(prev => prev + 1);
-  }, [
-    selectedBase?.id,
-    selectedProteina?.id,
-    selectedToppings.map(t => t.id).join(','),
-    selectedSalsa?.id
-  ]);
 
   // Calculate current price and weight
   const basePrice = selectedBase?.price || 0;
@@ -500,15 +566,16 @@ export const RamenBuilder: React.FC = () => {
   };
 
   return (
-    <section id="ramen-builder" className="py-20 bg-[#FDFBF7] select-none">
+    <section id="ramen-builder" className="pt-20 pb-32 md:pb-44 bg-transparent select-none">
+      <SoupGradDefs />
       <div className="max-w-7xl mx-auto px-6">
         
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">
-          <span className="text-[#FF4C4C] font-black uppercase tracking-widest text-xs flex items-center justify-center gap-1.5">
+          <span className="text-[#FFDE4D] font-black uppercase tracking-widest text-xs flex items-center justify-center gap-1.5">
             <Soup size={14} className="fill-current" /> Experiencia Ramen Builder
           </span>
-          <h2 className="font-fredoka text-3xl sm:text-4xl font-black text-[#1C1917]">
+          <h2 className="font-fredoka text-3xl sm:text-4xl font-black text-white">
             Configurador de Ramen
           </h2>
           <div className="h-1 w-16 bg-[#FFDE4D] rounded-full mx-auto"></div>
@@ -558,71 +625,119 @@ export const RamenBuilder: React.FC = () => {
               <AnimatePresence>
                 {selectedToppings.some(t => t.id === 'nori') && (
                   <motion.div
-                    key={`nori-${animationTrigger}`}
+                    key="nori"
                     initial={{ y: -150, opacity: 0, rotate: -15 }}
                     animate={{ y: 0, opacity: 1, rotate: -8 }}
                     exit={{ y: -150, opacity: 0 }}
                     transition={{ type: 'spring', damping: 10 }}
-                    className="absolute bottom-28 left-[18%] z-[5] bg-[#1C1917] border border-stone-700 w-16 h-20 rounded-md shadow-md flex items-center justify-center text-stone-500 font-bold"
+                    className="absolute bottom-28 left-[18%] z-[5]"
                   >
-                    <div className="w-12 h-16 border border-dashed border-white/20 rounded"></div>
+                    <motion.div
+                      animate={{
+                        y: [0, -3, 0],
+                        rotate: [0, 2, -2, 0]
+                      }}
+                      transition={{
+                        repeat: Infinity,
+                        duration: 5,
+                        ease: "easeInOut"
+                      }}
+                      className="bg-[#1C1917] border border-stone-700 w-16 h-20 rounded-md shadow-md flex items-center justify-center text-stone-500 font-bold select-none"
+                    >
+                      <div className="w-12 h-16 border border-dashed border-white/20 rounded flex flex-col justify-around p-1 opacity-60">
+                        <div className="h-0.5 bg-white/10 w-full rounded"></div>
+                        <div className="h-0.5 bg-white/10 w-3/4 rounded"></div>
+                        <div className="h-0.5 bg-white/10 w-5/6 rounded"></div>
+                      </div>
+                    </motion.div>
                   </motion.div>
                 )}
               </AnimatePresence>
 
-              {/* Soup Layer (sitting inside the bowl, fills dynamically) */}
+              {/* Soup Layer (sitting inside the bowl, fills dynamically with wavy liquid surface) */}
               <AnimatePresence>
                 {selectedSalsa && (
                   <motion.div
                     initial={{ opacity: 0, scaleY: 0 }}
                     animate={{ opacity: 1, scaleY: 1 }}
                     exit={{ opacity: 0, scaleY: 0 }}
-                    transition={{ duration: 0.5 }}
-                    className="absolute bottom-15.75 left-[8%] right-[8%] h-18 w-[84%] rounded-b-[1.75rem] origin-bottom z-[12]"
-                    style={{ backgroundColor: selectedSalsa.color }}
-                  />
+                    transition={{ duration: 0.6, ease: "easeOut" }}
+                    className="absolute bottom-15.75 left-[8%] right-[8%] h-18 w-[84%] rounded-b-[2.2rem] origin-bottom z-[12] overflow-hidden"
+                  >
+                    <svg viewBox="0 0 100 30" preserveAspectRatio="none" className="w-full h-full block">
+                      <motion.path
+                        d="M0,10 Q25,5 50,10 T100,10 L100,30 L0,30 Z"
+                        fill={`url(#soup-${selectedSalsa.id})`}
+                        animate={{
+                          d: [
+                            "M0,10 Q25,6 50,10 T100,10 L100,30 L0,30 Z",
+                            "M0,10 Q25,12 50,9 T100,10 L100,30 L0,30 Z",
+                            "M0,10 Q25,6 50,10 T100,10 L100,30 L0,30 Z"
+                          ]
+                        }}
+                        transition={{
+                          repeat: Infinity,
+                          duration: 4,
+                          ease: "easeInOut"
+                        }}
+                      />
+                      {/* Soup highlight lines (glimmering fat/broth lines) */}
+                      <motion.path
+                        d="M0,10 Q25,5 50,10 T100,10"
+                        stroke="rgba(255,255,255,0.25)"
+                        strokeWidth="0.8"
+                        fill="none"
+                        animate={{
+                          d: [
+                            "M0,10 Q25,6 50,10 T100,10",
+                            "M0,10 Q25,12 50,9 T100,10",
+                            "M0,10 Q25,6 50,10 T100,10"
+                          ]
+                        }}
+                        transition={{
+                          repeat: Infinity,
+                          duration: 4,
+                          ease: "easeInOut"
+                        }}
+                      />
+                    </svg>
+                  </motion.div>
                 )}
               </AnimatePresence>
 
               {/* Soup Bubbles (gurgling when soup is active) */}
-              {selectedSalsa && (
-                <div className="absolute bottom-16 left-[20%] right-[20%] h-10 z-[13] overflow-hidden pointer-events-none opacity-40">
-                  <motion.div
-                    animate={{ y: [0, -10, 0] }}
-                    transition={{ repeat: Infinity, duration: 3, ease: 'easeInOut' }}
-                    className="w-2 h-2 rounded-full bg-white absolute left-4 bottom-2"
-                  />
-                  <motion.div
-                    animate={{ y: [0, -8, 0] }}
-                    transition={{ repeat: Infinity, duration: 2.5, ease: 'easeInOut', delay: 0.4 }}
-                    className="w-1.5 h-1.5 rounded-full bg-white absolute right-8 bottom-4"
-                  />
-                  <motion.div
-                    animate={{ y: [0, -12, 0] }}
-                    transition={{ repeat: Infinity, duration: 3.2, ease: 'easeInOut', delay: 0.8 }}
-                    className="w-2.5 h-2.5 rounded-full bg-white absolute left-1/2 bottom-1"
-                  />
-                </div>
-              )}
+              {selectedSalsa && <SoupBubbles />}
 
               {/* Wavy Noodles Layer (Custom SVG path representation) */}
               <AnimatePresence>
                 {selectedBase && (
                   <motion.div
-                    key={`noodles-${selectedBase.id}-${animationTrigger}`}
+                    key={`noodles-${selectedBase.id}`}
                     initial={{ y: -200, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     exit={{ y: -200, opacity: 0 }}
                     transition={{ type: 'spring', damping: 15 }}
                     className="absolute bottom-16 left-[14%] right-[14%] w-[72%] h-20 z-[15] select-none pointer-events-none"
                   >
-                    <svg viewBox="0 0 200 80" className="w-full h-full fill-none">
-                      <path d="M 10 30 Q 30 10 50 30 T 90 30 T 130 30 T 170 30" stroke="#FFDE4D" strokeWidth="4.5" strokeLinecap="round" />
-                      <path d="M 15 40 Q 35 20 55 40 T 95 40 T 135 40 T 175 40" stroke="#FFD034" strokeWidth="4.5" strokeLinecap="round" />
-                      <path d="M 20 50 Q 40 30 60 50 T 100 50 T 140 50 T 180 50" stroke="#FFC000" strokeWidth="4.5" strokeLinecap="round" />
-                      <path d="M 8 20 Q 28 0 48 20 T 88 20 T 128 20 T 168 20" stroke="#FFDE4D" strokeWidth="3.5" strokeLinecap="round" opacity="0.8" />
-                      <path d="M 25 35 Q 45 15 65 35 T 105 35 T 145 35 T 185 35" stroke="#FFE885" strokeWidth="3" strokeLinecap="round" />
-                    </svg>
+                    <motion.div
+                      animate={{
+                        y: [0, -3, 0],
+                      }}
+                      transition={{
+                        repeat: Infinity,
+                        duration: 4.2,
+                        ease: "easeInOut"
+                      }}
+                      className="w-full h-full"
+                    >
+                      <svg viewBox="0 0 200 80" className="w-full h-full fill-none">
+                        <path d="M 10 30 Q 30 10 50 30 T 90 30 T 130 30 T 170 30" stroke="#FFDE4D" strokeWidth="4.5" strokeLinecap="round" />
+                        <path d="M 15 40 Q 35 20 55 40 T 95 40 T 135 40 T 175 40" stroke="#FFD034" strokeWidth="4.5" strokeLinecap="round" />
+                        <path d="M 20 50 Q 40 30 60 50 T 100 50 T 140 50 T 180 50" stroke="#FFC000" strokeWidth="4.5" strokeLinecap="round" />
+                        <path d="M 8 20 Q 28 0 48 20 T 88 20 T 128 20 T 168 20" stroke="#FFDE4D" strokeWidth="3.5" strokeLinecap="round" opacity="0.8" />
+                        <path d="M 25 35 Q 45 15 65 35 T 105 35 T 145 35 T 185 35" stroke="#FFE885" strokeWidth="3" strokeLinecap="round" />
+                      </svg>
+                    </motion.div>
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -631,14 +746,27 @@ export const RamenBuilder: React.FC = () => {
               <AnimatePresence>
                 {selectedProteina && (
                   <motion.div
-                    key={`protein-${selectedProteina.id}-${animationTrigger}`}
+                    key={`protein-${selectedProteina.id}`}
                     initial={{ y: -220, opacity: 0, rotate: -30 }}
                     animate={{ y: 0, opacity: 1, rotate: -12 }}
                     exit={{ y: -220, opacity: 0 }}
                     transition={{ type: 'spring', damping: 12, stiffness: 100 }}
-                    className="absolute bottom-22 left-[18%] z-[20] w-14 h-14 bg-white border border-stone-200 rounded-full flex items-center justify-center shadow-[0_4px_12px_rgba(0,0,0,0.10)] filter drop-shadow-md select-none"
+                    className="absolute bottom-22 left-[18%] z-[20] select-none"
                   >
-                    <OptionIcon id={selectedProteina.id} className="w-10 h-10" />
+                    <motion.div
+                      animate={{
+                        y: [0, -5, 0],
+                        rotate: [0, -3, 3, 0],
+                      }}
+                      transition={{
+                        repeat: Infinity,
+                        duration: 3.8,
+                        ease: "easeInOut"
+                      }}
+                      className="w-14 h-14 bg-white border border-stone-200 rounded-full flex items-center justify-center shadow-md filter drop-shadow-md"
+                    >
+                      <OptionIcon id={selectedProteina.id} className="w-10 h-10" />
+                    </motion.div>
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -647,20 +775,38 @@ export const RamenBuilder: React.FC = () => {
               <AnimatePresence>
                 {selectedToppings.filter(t => t.id !== 'nori').map((top, index) => {
                   const positions = [
-                    'bottom-24 right-[16%] rotate-[12deg]',
-                    'bottom-28 left-[40%] rotate-[-6deg]',
-                    'bottom-18 right-[36%] rotate-[22deg]',
+                    { className: 'bottom-24 right-[16%]', rotate: 12 },
+                    { className: 'bottom-28 left-[40%]', rotate: -6 },
+                    { className: 'bottom-18 right-[36%]', rotate: 22 },
+                    { className: 'bottom-22 left-[30%]', rotate: 8 },
+                    { className: 'bottom-20 right-[22%]', rotate: -15 },
                   ];
+                  const pos = positions[index % positions.length];
+
                   return (
                     <motion.div
-                      key={`${top.id}-${animationTrigger}`}
-                      initial={{ y: -250, opacity: 0, scale: 0.5 }}
-                      animate={{ y: 0, opacity: 1, scale: 1 }}
+                      key={top.id}
+                      initial={{ y: -250, opacity: 0, scale: 0.5, rotate: pos.rotate }}
+                      animate={{ y: 0, opacity: 1, scale: 1, rotate: pos.rotate }}
                       exit={{ y: -250, opacity: 0 }}
                       transition={{ type: 'spring', damping: 10, delay: index * 0.08 }}
-                      className={`absolute z-[25] w-12 h-12 bg-white border border-stone-200 rounded-full flex items-center justify-center shadow-[0_4px_12px_rgba(0,0,0,0.10)] filter drop-shadow-md select-none ${positions[index]}`}
+                      className={`absolute z-[25] select-none ${pos.className}`}
                     >
-                      <OptionIcon id={top.id} className="w-8 h-8" />
+                      <motion.div
+                        animate={{
+                          y: [0, -4, 0],
+                          rotate: [0, 3, -3, 0],
+                        }}
+                        transition={{
+                          repeat: Infinity,
+                          duration: 3 + index * 0.5,
+                          ease: "easeInOut",
+                          delay: index * 0.2
+                        }}
+                        className="w-12 h-12 bg-white border border-stone-200 rounded-full flex items-center justify-center shadow-sm filter drop-shadow-sm"
+                      >
+                        <OptionIcon id={top.id} className="w-8 h-8" />
+                      </motion.div>
                     </motion.div>
                   );
                 })}
@@ -669,7 +815,7 @@ export const RamenBuilder: React.FC = () => {
               {/* Ramen Bowl Shape Sticker with Japanese design */}
               <div
                 style={bowlStyle}
-                className="absolute bottom-6 left-[8%] right-[8%] h-28 border-2 border-stone-200 rounded-b-[4.5rem] bg-white shadow-[0_8px_32px_rgba(0,0,0,0.08)] z-[30] flex flex-col justify-end pb-3 items-center overflow-hidden"
+                className="absolute bottom-6 left-[8%] right-[8%] h-28 border border-stone-200 rounded-b-[4.5rem] bg-white shadow-[0_8px_32px_rgba(0,0,0,0.08)] z-[30] flex flex-col justify-end pb-3 items-center overflow-hidden"
               >
                 {/* Decorative border checker striping */}
                 <div className="absolute top-0 left-0 right-0 h-4 bg-[#FF4C4C] flex justify-around items-center overflow-hidden">

@@ -90,9 +90,9 @@ interface ButtonProps extends HTMLMotionProps<'button'> {
 export const ButtonPrimary: React.FC<ButtonProps> = ({ children, className = '', ...props }) => {
   return (
     <motion.button
-      whileHover={{ y: -3, x: -3 }}
-      whileTap={{ y: 1, x: 1 }}
-      className={`px-6 py-3 bg-[#FFDE4D] text-[#1C1917] font-black uppercase tracking-wider rounded-2xl border-sticker shadow-sticker transition-shadow duration-150 hover:shadow-sticker-lg cursor-pointer inline-flex items-center justify-center gap-2 ${className}`}
+      whileHover={{ y: -3, scale: 1.03 }}
+      whileTap={{ scale: 0.97 }}
+      className={`px-6 py-3 bg-[#FFDE4D] text-[#1C1917] font-black uppercase tracking-wider rounded-full shadow-md hover:shadow-lg transition-all duration-200 cursor-pointer inline-flex items-center justify-center gap-2 ${className}`}
       {...props}
     >
       {children}
@@ -103,9 +103,9 @@ export const ButtonPrimary: React.FC<ButtonProps> = ({ children, className = '',
 export const ButtonSecondary: React.FC<ButtonProps> = ({ children, className = '', ...props }) => {
   return (
     <motion.button
-      whileHover={{ y: -3, x: -3 }}
-      whileTap={{ y: 1, x: 1 }}
-      className={`px-6 py-3 bg-white text-[#1C1917] font-black uppercase tracking-wider rounded-2xl border-sticker shadow-sticker transition-shadow duration-150 hover:shadow-sticker-lg cursor-pointer inline-flex items-center justify-center gap-2 ${className}`}
+      whileHover={{ y: -3, scale: 1.03 }}
+      whileTap={{ scale: 0.97 }}
+      className={`px-6 py-3 bg-white text-[#1C1917] font-black uppercase tracking-wider rounded-full border border-stone-200 shadow-md hover:shadow-lg transition-all duration-200 cursor-pointer inline-flex items-center justify-center gap-2 ${className}`}
       {...props}
     >
       {children}
@@ -221,7 +221,7 @@ export const ContactInput: React.FC<ContactInputProps> = ({
           placeholder={placeholder}
           required={required}
           rows={4}
-          className="w-full px-4 py-3 bg-white font-outfit font-bold text-sm text-[#1C1917] placeholder-[#1C1917]/40 border-sticker rounded-2xl shadow-sticker focus:outline-none focus:ring-0 focus:shadow-sticker-lg transition-all resize-none"
+          className="w-full px-4 py-3 bg-white font-outfit font-bold text-sm text-[#1C1917] placeholder-[#1C1917]/40 border border-stone-200 rounded-2xl shadow-sm focus:outline-none focus:ring-0 focus:border-stone-300 focus:shadow-md transition-all resize-none"
         />
       ) : (
         <input
@@ -230,7 +230,7 @@ export const ContactInput: React.FC<ContactInputProps> = ({
           onChange={onChange}
           placeholder={placeholder}
           required={required}
-          className="w-full px-4 py-3 bg-white font-outfit font-bold text-sm text-[#1C1917] placeholder-[#1C1917]/40 border-sticker rounded-2xl shadow-sticker focus:outline-none focus:ring-0 focus:shadow-sticker-lg transition-all"
+          className="w-full px-4 py-3 bg-white font-outfit font-bold text-sm text-[#1C1917] placeholder-[#1C1917]/40 border border-stone-200 rounded-2xl shadow-sm focus:outline-none focus:ring-0 focus:border-stone-300 focus:shadow-md transition-all"
         />
       )}
     </div>
@@ -343,13 +343,13 @@ export const CategoryCard: React.FC<CategoryCardProps> = ({
   return (
     <motion.div
       onClick={onClick}
-      whileHover={{ y: -5 }}
+      whileHover={{ y: -5, scale: 1.01 }}
       whileTap={{ scale: 0.98 }}
-      className="border-sticker rounded-3xl p-6 shadow-sticker hover:shadow-sticker-lg transition-all flex flex-col justify-between h-full w-full cursor-pointer select-none"
+      className="rounded-[28px] p-6 shadow-[8px_8px_rgba(0,0,0,0.08)] hover:shadow-[0_16px_40px_rgba(0,0,0,0.12)] transition-all duration-300 flex flex-col justify-between h-full w-full cursor-pointer select-none"
       style={{ backgroundColor: color }}
     >
       <div className="flex items-start gap-4 sm:gap-6">
-        <div className="w-16 h-16 bg-white border-sticker rounded-2xl flex items-center justify-center p-2 flex-shrink-0 shadow-sticker-sm">
+        <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center p-2 flex-shrink-0 shadow-md">
           <img src={image} alt={title} className="max-w-full max-h-full object-contain animate-float-cute" />
         </div>
         <div className="flex-grow">
@@ -358,7 +358,7 @@ export const CategoryCard: React.FC<CategoryCardProps> = ({
         </div>
       </div>
       <div className="mt-6 flex justify-end">
-        <div className="inline-flex items-center gap-2 px-4 py-2 border-sticker-sm rounded-xl bg-white text-[#1C1917] font-fredoka font-black text-xs uppercase tracking-wider shadow-sticker-sm hover:shadow-sticker active:translate-x-[1px] active:translate-y-[1px] transition-all">
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#1C1917] text-[#FFDE4D] font-fredoka font-black text-xs uppercase tracking-wider shadow-md hover:shadow-lg transition-all">
           <span>{buttonText}</span>
           <ArrowRight size={14} className="stroke-[3px]" />
         </div>

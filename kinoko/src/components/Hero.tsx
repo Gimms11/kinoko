@@ -12,7 +12,7 @@ export const Hero: React.FC = () => {
   };
 
   return (
-    <section id="inicio" className="relative py-12 md:py-24 overflow-hidden select-none bg-[#FDFBF7]">
+    <section id="inicio" className="relative pt-12 pb-24 md:pt-24 md:pb-40 overflow-hidden select-none bg-[#FDFBF7]">
       {/* Background waves */}
       <div 
         className="absolute inset-0 opacity-70 pointer-events-none"
@@ -41,7 +41,7 @@ export const Hero: React.FC = () => {
           {/* Heading */}
           <h1 className="font-fredoka text-4xl sm:text-5xl lg:text-6xl font-black text-[#1C1917] leading-[1.1] tracking-tight">
             Tu rincón asiático <br />
-            favorito en <span className="bg-[#FFDE4D] border-sticker-sm rounded-2xl px-3 inline-block shadow-sticker rotate-[1deg] text-[#1C1917]">Ica</span>
+            favorito en <span className="bg-[#FFDE4D] rounded-2xl px-3 inline-block rotate-[1deg] text-[#1C1917]">Ica</span>
           </h1>
 
           {/* Subtitle */}

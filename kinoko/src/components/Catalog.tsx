@@ -91,7 +91,7 @@ export const Catalog: React.FC = () => {
   });
 
   return (
-    <section id="catalogo" className="py-24 bg-stone-50 select-none">
+    <section id="catalogo" className="pt-24 pb-36 md:pb-44 bg-transparent select-none">
       <div className="max-w-7xl mx-auto px-6">
         
         {/* Section Header */}
